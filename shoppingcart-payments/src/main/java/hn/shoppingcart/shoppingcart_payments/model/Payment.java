@@ -1,4 +1,4 @@
-package hn.shoppingcart.shoppingcart_orders.model;
+package hn.shoppingcart.shoppingcart_payments.model;
 
 import java.util.Date;
 import java.util.List;
@@ -12,15 +12,21 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Order {
+public class Payment {
 
 	private int id;
 
-	private Client client;
+	private int orderId;
+
+	private List<OrderDetail> orderDetail;
+
+	private PaymentMethod paymentMethod;
 
 	private Date date;
 
-	private OrderStatus status;
+	private double subtotal;
 
-	private List<OrderDetail> orderDetails;
+	private double tax;
+
+	private double total;
 }

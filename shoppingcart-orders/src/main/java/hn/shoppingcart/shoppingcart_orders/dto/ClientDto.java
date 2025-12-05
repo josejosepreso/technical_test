@@ -1,13 +1,9 @@
 package hn.shoppingcart.shoppingcart_orders.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
-@AllArgsConstructor
-public class ClientDto {
+@Data
+public final class ClientDto {
 	private final int clientId;
 
 	private final String fullName;

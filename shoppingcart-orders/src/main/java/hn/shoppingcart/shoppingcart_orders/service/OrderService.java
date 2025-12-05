@@ -5,82 +5,125 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import hn.shoppingcart.shoppingcart_orders.OrderStatus;
 import hn.shoppingcart.shoppingcart_orders.dto.OrderDetailRequestDto;
 import hn.shoppingcart.shoppingcart_orders.dto.OrderRequestDto;
+import hn.shoppingcart.shoppingcart_orders.dto.OrderResponseDto;
+import hn.shoppingcart.shoppingcart_orders.dto.OrderSummaryResponseDto;
+import hn.shoppingcart.shoppingcart_orders.dto.ProductPriceResponseDto;
 import hn.shoppingcart.shoppingcart_orders.model.Client;
 import hn.shoppingcart.shoppingcart_orders.model.Order;
 import hn.shoppingcart.shoppingcart_orders.model.OrderDetail;
+import hn.shoppingcart.shoppingcart_orders.model.OrderStatus;
 
 @RestController
 @RequestMapping("/orders")
 public class OrderService {
 
+	@Autowired
+	private ProductServiceClient productServiceClient;
+
 	private List<Order> orders;
 
-	private List<OrderDetail> orderDetails;
+	private List<OrderStatus> orderStatus;
 
 	private List<Client> clients;
 
 	public OrderService() {
 		this.orders = new ArrayList<>();
-		this.orderDetails = new ArrayList<>();
+
+		this.orderStatus = List.of(
+			new OrderStatus(1, "PENDING"),
+			new OrderStatus(2, "PAID"),
+			new OrderStatus(3, "CANCELLED")
+		);
 
 		this.clients = List.of(
-			new Client(1, "Jose", "Bautista", "jose@gmail.com", "11223344", new Date())
+			new Client(1, "Jose", "Bautista", "jose@gmail.com", "11223344", new Date()),
+			new Client(2, "Roberto", "Cubas", "roberto@gmail.com", "33445566", new Date())
 		);
 	}
 
-	public List<Order> getAll() {
-		return this.orders;
+	public List<OrderResponseDto> getAll() {
+		return this.orders.stream().map(OrderResponseDto::new).toList();
 	}
 
 	public Optional<Order> getById(int id) {
-		final List<Order> orders = this.orders.stream()
+		// assuming orderId is unique
+		return this.orders.stream()
 			.filter(order -> order.getId() == id)
-			.toList();
-
-		if (orders.isEmpty()) {
-			return Optional.empty();
-		}
-
-		return Optional.of(orders.get(0));
+			.findFirst();
 	}
 
-	public Order create(OrderRequestDto dto) {
-		//
+	public Optional<OrderSummaryResponseDto> getByIdSummary(int id) {
+		return this.getById(id).map(OrderSummaryResponseDto::new);
+	}
+
+	public Optional<OrderResponseDto> getByIdDto(int id) {
+		return this.getById(id).map(OrderResponseDto::new);
+	}
+
+	public OrderResponseDto create(OrderRequestDto dto) throws Exception {
 		final int id = dto.getId();
 
-		if (this.getById(id).isPresent()) return null;
+		if (this.getById(id).isPresent()) {
+			throw new Exception(String.format("Order width id %s already exists.", id));
+		}
 
-		//
-		final List<Client> clientsMatch = this.clients.stream()
-			.filter(client -> client.getId() == dto.getClientId())
-			.toList();
+		// assuming clientId is unique
+		final Optional<Client> client = this.clients.stream()
+			.filter(c -> c.getId() == dto.getClientId())
+			.findFirst();
 
-		if (clientsMatch.isEmpty()) return null;
+		if (client.isEmpty()) {
+			throw new Exception(String.format("Client with id %s doesn't exists.", dto.getClientId()));
+		}
 
+		final Optional<OrderStatus> orderStatus = this.orderStatus.stream()
+			.filter(oStatus -> oStatus.getDescription().equals("PENDING"))
+			.findFirst();
 		//
 		final Order order = new Order();
 		order.setId(id);
-		order.setClient(clientsMatch.get(0));
+		order.setClient(client.get());
 		order.setDate(new Date());
-		order.setStatus(OrderStatus.PENDING);
+		order.setStatus(orderStatus.get());
+
+		final List<OrderDetail> orderDetails = this.getOrderDetails(order, dto.getOrderDetails());
+		order.setOrderDetails(orderDetails);
 
 		//
-		List<OrderDetailRequestDto> products = dto.getOrderDetails();
-
-		final OrderDetail orderDetail = new OrderDetail();
-		orderDetail.setOrder(order);
-		orderDetail.setProducts(products);
-
-		//
-		this.orderDetails.add(orderDetail);
 		this.orders.add(order);
 
-		return order;
+		return new OrderResponseDto(order);
+	}
+
+	private List<OrderDetail> getOrderDetails(Order order, List<OrderDetailRequestDto> dtos) throws Exception {
+		final List<Integer> productsIds = dtos.stream()
+			.map(OrderDetailRequestDto::getProductId)
+			.toList();
+
+		final List<ProductPriceResponseDto> prices = this.productServiceClient.fetchProductsPricing(productsIds);
+
+		List<OrderDetail> orderDetails = new ArrayList<>();
+
+		for (OrderDetailRequestDto orderDetailRequestDto : dtos) {
+			int productId = orderDetailRequestDto.getProductId();
+
+			Optional<ProductPriceResponseDto> productPriceDto = prices.stream()
+				.filter(p -> p.getProductId() == productId)
+				.findFirst();
+
+			if (productPriceDto.isEmpty()) {
+				throw new IllegalArgumentException(String.format("Product width id %s doesn't exist.", productId));
+			}
+
+			orderDetails.add(new OrderDetail(order, productId, productPriceDto.get().getUnitPrice(), orderDetailRequestDto.getQuantity()));
+		}
+
+		return orderDetails;
 	}
 }

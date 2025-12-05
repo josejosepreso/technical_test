@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -13,6 +12,8 @@ import org.springframework.web.client.RestTemplate;
 import hn.shoppingcart.shoppingcart_products.model.Product;
 
 import hn.shoppingcart.shoppingcart_products.Configuration;
+import hn.shoppingcart.shoppingcart_products.dto.ProductPriceRequestDto;
+import hn.shoppingcart.shoppingcart_products.dto.ProductPriceResponseDto;
 
 @Service
 public class ProductService {
@@ -43,5 +44,20 @@ public class ProductService {
 		}
 
 		return res.getBody();
+	}
+
+	public List<ProductPriceResponseDto> getPricing(ProductPriceRequestDto dto) {
+		final List<Integer> productsIds = dto.getProductsIds();
+
+		return this.getAll().stream()
+			.filter(product -> productsIds.contains(product.getId()))
+			.map(ProductPriceResponseDto::new)
+			.toList();
+	}
+
+	public List<ProductPriceResponseDto> getPricing() {
+		return this.getAll().stream()
+			.map(ProductPriceResponseDto::new)
+			.toList();
 	}
 }

@@ -1,21 +1,17 @@
-package hn.shoppingcart.shoppingcart_orders.model;
+package hn.shoppingcart.shoppingcart_payments.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 public class OrderDetail {
-	
-	private Order order;
 
 	private int productId;
 
-	private double unitPrice;
-
 	private int quantity;
+
+	private double unitPrice;
 }
