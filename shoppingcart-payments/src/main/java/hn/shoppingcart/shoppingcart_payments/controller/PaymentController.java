@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import hn.shoppingcart.shoppingcart_payments.ErrorResponse;
 import hn.shoppingcart.shoppingcart_payments.dto.PaymentRequestDto;
 import hn.shoppingcart.shoppingcart_payments.dto.PaymentResponseDto;
 import hn.shoppingcart.shoppingcart_payments.service.PaymentService;
+import hn.shoppingcart.shoppingcart_payments.util.ErrorResponse;
 
 @RestController
 @RequestMapping("/api/payments")

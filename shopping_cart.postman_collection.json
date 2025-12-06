@@ -109,13 +109,50 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlIiwicm9sZSI6IkNMSUVOVCIsImlhdCI6MTc2NTAwMTQ3NiwiZXhwIjoxNzY1MDAxNTM2fQ.0w8mDirTngKci6liaJ1bwN-n3qrCD1YEIOP3nLjnlR0",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzY1MDM3MjQ4LCJleHAiOjE3NjUwMzc1NDh9.UiWYwhFuKdwUwptOHwB7Lr9vFQqVaUEkq9Evh3hc7J4",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"id\": 1,\n    \"clientId\": 1,\n    \"orderDetails\": [\n        {\n            \"productId\": 1,\n            \"quantity\": 4\n        }\n    ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ORDERS_API_URL}}/create",
+							"host": [
+								"{{ORDERS_API_URL}}"
+							],
+							"path": [
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createOrder0",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzY1MDM2NTY2LCJleHAiOjE3NjUwMzY4NjZ9.K_XHrZBrBVsoOyx33o9CsEj8k5o2RhHnFzLo_eAu_Nc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 3,\n    \"clientId\": 1,\n    \"orderDetails\": [\n        {\n            \"productId\": 1,\n            \"quantity\": 4\n        },\n        {\n            \"productId\": 10,\n            \"quantity\": 100\n        }\n    ]\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -145,6 +182,11 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NjUwMzczOTMsImV4cCI6MTc2NTAzNzY5M30.WvaF-P8xBw6ml8QuTrbbONgLThcDVkqJC1dO8gFz8zU",
 								"type": "text"
 							}
 						],
@@ -226,6 +268,11 @@
 								"key": "Content-Type",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzY1MDM3MjQ4LCJleHAiOjE3NjUwMzc1NDh9.UiWYwhFuKdwUwptOHwB7Lr9vFQqVaUEkq9Evh3hc7J4",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -253,7 +300,13 @@
 					"name": "getAllPayments",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzY1MDM3MjQ4LCJleHAiOjE3NjUwMzc1NDh9.UiWYwhFuKdwUwptOHwB7Lr9vFQqVaUEkq9Evh3hc7J4",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{PAYMENTS_API_URL}}/all",
 							"host": [
@@ -272,7 +325,7 @@
 			"name": "auth",
 			"item": [
 				{
-					"name": "auth",
+					"name": "authClient",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -284,7 +337,39 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\": \"jose\"\n}",
+							"raw": "{\n    \"username\": \"user\",\n    \"password\": \"user\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SECURITY_API_URL}}/auth",
+							"host": [
+								"{{SECURITY_API_URL}}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "authAdmin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"admin\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"

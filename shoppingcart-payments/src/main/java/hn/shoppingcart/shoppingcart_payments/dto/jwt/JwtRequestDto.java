@@ -1,4 +1,4 @@
-package hn.shoppingcart.shoppingcart_orders.dto.jwt;
+package hn.shoppingcart.shoppingcart_payments.dto.jwt;
 
 import lombok.Data;
 

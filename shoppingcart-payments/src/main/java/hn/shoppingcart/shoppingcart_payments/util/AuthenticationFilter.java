@@ -1,13 +1,14 @@
-package hn.shoppingcart.shoppingcart_orders.util;
+package hn.shoppingcart.shoppingcart_payments.util;
 
 import java.io.IOException;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import hn.shoppingcart.shoppingcart_orders.Configuration;
+import hn.shoppingcart.shoppingcart_payments.Configuration;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,16 +23,18 @@ public class AuthenticationFilter extends OncePerRequestFilter {
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 		final String authHeader = request.getHeader("Authorization");
-
+		
 		if (authHeader == null || !authHeader.startsWith("Bearer ")) {
 			response.setStatus(HttpStatus.UNAUTHORIZED.value());
 			return;
 		}
 
 		final String token = authHeader.split(" ")[1];
+		this.jwtServiceClient.setCurrentToken(token);
+
 		final String url = Configuration.API_URL_DOMAIN + request.getServletPath();
 
-		final boolean authorized = this.jwtServiceClient.authorize(token, url);
+		final boolean authorized = this.jwtServiceClient.authorize(url);
 
 		if (!authorized) {
 			response.setStatus(HttpStatus.UNAUTHORIZED.value());

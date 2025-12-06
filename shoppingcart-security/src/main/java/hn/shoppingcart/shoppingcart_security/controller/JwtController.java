@@ -31,15 +31,15 @@ public class JwtController {
 	@PostMapping("/auth")
 	public ResponseEntity<?> auth(@RequestBody AuthRequestDto authRequestDto) {
 		try {
-			return ResponseEntity.ok(new AuthResponseDto(this.jwtService.generateToken(authRequestDto.getUsername())));
+			return ResponseEntity.ok(new AuthResponseDto(this.jwtService.generateToken(authRequestDto)));
 		} catch(Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
 				.body(new ErrorResponse(e.getMessage()));
 		}
 	}
 
-	@PostMapping("/validateToken")
-	public ResponseEntity<?> validateToken(@RequestBody ValidateJwtRequestDto dto) {
-		return ResponseEntity.ok(new ValidateJwtResponseDto(this.jwtService.isValid(dto.getToken())));
+	@PostMapping("/validateAuth")
+	public ResponseEntity<?> validateAuth(@RequestBody ValidateJwtRequestDto dto) {
+		return ResponseEntity.ok(new ValidateJwtResponseDto(this.jwtService.authorize(dto)));
 	}
 }

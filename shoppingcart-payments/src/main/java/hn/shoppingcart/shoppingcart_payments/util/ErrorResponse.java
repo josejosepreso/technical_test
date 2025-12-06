@@ -1,4 +1,4 @@
-package hn.shoppingcart.shoppingcart_payments;
+package hn.shoppingcart.shoppingcart_payments.util;
 
 import lombok.Data;
 
