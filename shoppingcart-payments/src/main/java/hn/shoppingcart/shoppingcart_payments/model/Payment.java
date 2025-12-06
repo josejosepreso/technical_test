@@ -31,4 +31,6 @@ public class Payment {
 	private double tax;
 
 	private double total;
+
+	private PaymentStatus paymentStatus;
 }

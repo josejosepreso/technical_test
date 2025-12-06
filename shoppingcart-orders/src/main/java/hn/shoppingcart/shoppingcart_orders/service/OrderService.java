@@ -3,12 +3,15 @@ package hn.shoppingcart.shoppingcart_orders.service;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import hn.shoppingcart.shoppingcart_orders.dto.order.OrderConfirmRequestDto;
 import hn.shoppingcart.shoppingcart_orders.dto.order.OrderDetailRequestDto;
 import hn.shoppingcart.shoppingcart_orders.dto.order.OrderRequestDto;
 import hn.shoppingcart.shoppingcart_orders.dto.order.OrderResponseDto;
@@ -37,8 +40,8 @@ public class OrderService {
 		this.orders = new ArrayList<>();
 
 		this.orderStatus = List.of(
+			new OrderStatus(1, "CONFIRMED"),
 			new OrderStatus(1, "PENDING"),
-			new OrderStatus(2, "PAID"),
 			new OrderStatus(3, "CANCELLED")
 		);
 
@@ -71,12 +74,28 @@ public class OrderService {
 			.orElseThrow(() -> new Exception(String.format("Order with id %s doesn't exist.", id)));
 	}
 
+	public OrderResponseDto confirm(OrderConfirmRequestDto dto) throws Exception {
+		final int orderId = dto.getOrderId();
+		//
+		final Order order = this.orders.stream()
+			.filter(o -> o.getId() == orderId)
+			.findFirst()
+			.orElseThrow(() -> new Exception(String.format("Order with id %s doesn't exist.", orderId)));
+
+		final OrderStatus orderStatus = this.orderStatus.stream()
+			.filter(oStatus -> oStatus.getDescription().equals("CONFIRMED"))
+			.findFirst()
+			.orElseThrow(() -> new Exception("Impossible event."));
+
+		order.setStatus(orderStatus);
+
+		return new OrderResponseDto(order);
+	}
+
 	public OrderResponseDto create(OrderRequestDto dto) throws Exception {
 		final int id = dto.getId();
 
-		if (this.getById(id).isPresent()) {
-			throw new Exception(String.format("Order width id %s already exists.", id));
-		}
+		if (this.getById(id).isPresent()) throw new Exception(String.format("Order width id %s already exists.", id));
 
 		// assuming clientId is unique
 		final Client client = this.clients.stream()
@@ -84,17 +103,20 @@ public class OrderService {
 			.findFirst()
 			.orElseThrow(() -> new Exception(String.format("Client with id %s doesn't exists.", dto.getClientId())));
 
-		final Optional<OrderStatus> orderStatus = this.orderStatus.stream()
+		final OrderStatus orderStatus = this.orderStatus.stream()
 			.filter(oStatus -> oStatus.getDescription().equals("PENDING"))
-			.findFirst();
+			.findFirst()
+			.orElseThrow(() -> new Exception("Impossible event"));
+
 		//
 		final Order order = new Order();
 		order.setId(id);
 		order.setClient(client);
 		order.setDate(new Date());
-		order.setStatus(orderStatus.get());
+		order.setStatus(orderStatus);
 
-		final List<OrderDetail> orderDetails = this.getOrderDetails(order, dto.getOrderDetails());
+		final List<OrderDetail> orderDetails = this.mapOrderDetails(order, dto.getOrderDetails());
+
 		order.setOrderDetails(orderDetails);
 
 		//
@@ -103,24 +125,25 @@ public class OrderService {
 		return new OrderResponseDto(order);
 	}
 
-	private List<OrderDetail> getOrderDetails(Order order, List<OrderDetailRequestDto> dtos) throws Exception {
+	private List<OrderDetail> mapOrderDetails(Order order, List<OrderDetailRequestDto> dtos) throws Exception {
 		final List<Integer> productsIds = dtos.stream()
 			.map(OrderDetailRequestDto::getProductId)
 			.toList();
 
-		final List<ProductPriceResponseDto> pricing = this.productServiceClient.fetchProductsPricing(productsIds);
+		// productId:unitPrice map
+		final Map<Integer, Double> pricing = this.productServiceClient.fetchProductsPricing(productsIds)
+			.stream()
+			.collect(Collectors.toMap(ProductPriceResponseDto::getProductId, ProductPriceResponseDto::getUnitPrice));
 
-		List<OrderDetail> orderDetails = new ArrayList<>();
+		final List<OrderDetail> orderDetails = new ArrayList<>();
 
-		for (OrderDetailRequestDto orderDetailRequestDto : dtos) {
-			int productId = orderDetailRequestDto.getProductId();
+		for (OrderDetailRequestDto dto : dtos) {
+			final int productId = dto.getProductId();
 
-			ProductPriceResponseDto productPriceDto = pricing.stream()
-				.filter(p -> p.getProductId() == productId)
-				.findFirst()
-				.orElseThrow(() -> new IllegalArgumentException(String.format("Product width id %s doesn't exist.", productId)));
+			final Double price = Optional.ofNullable(pricing.get(dto.getProductId()))
+				.orElseThrow(() -> new Exception(String.format("Product with id %s doesn't exist", productId)));
 
-			orderDetails.add(new OrderDetail(order, productId, productPriceDto.getUnitPrice(), orderDetailRequestDto.getQuantity()));
+			orderDetails.add(new OrderDetail(order, productId, price, dto.getQuantity()));
 		}
 
 		return orderDetails;

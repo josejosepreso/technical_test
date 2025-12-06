@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import hn.shoppingcart.shoppingcart_payments.dto.PaymentRequestDto;
-import hn.shoppingcart.shoppingcart_payments.dto.PaymentResponseDto;
+import hn.shoppingcart.shoppingcart_payments.dto.payment.PaymentRequestDto;
+import hn.shoppingcart.shoppingcart_payments.dto.payment.PaymentResponseDto;
 import hn.shoppingcart.shoppingcart_payments.service.PaymentService;
 import hn.shoppingcart.shoppingcart_payments.util.ErrorResponse;
 
@@ -30,9 +30,8 @@ public class PaymentController {
 
 	@PostMapping("/create")
 	public ResponseEntity<?> create(@RequestBody PaymentRequestDto dto) {
-		try {
-			return ResponseEntity.ok(this.paymentService.create(dto));
-		} catch(Exception e) {
+		try { return ResponseEntity.ok(this.paymentService.create(dto)); }
+		catch(Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
 				.body(new ErrorResponse(e.getMessage()));
 		}

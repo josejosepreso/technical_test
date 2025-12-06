@@ -10,10 +10,12 @@ public final class OrderSummaryResponseDto {
 	private final int orderId;
 	private final int clientId;
 	private final List<OrderDetailResponseDto> orderDetails;
+	private final String status;
 
 	public OrderSummaryResponseDto(Order order) {
 		this.orderId = order.getId();
 		this.clientId = order.getClient().getId();
 		this.orderDetails = order.getOrderDetails().stream().map(OrderDetailResponseDto::new).toList();
+		this.status = order.getStatus().getDescription();
 	}
 }

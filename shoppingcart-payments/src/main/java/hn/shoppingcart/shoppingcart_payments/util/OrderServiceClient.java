@@ -11,7 +11,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import hn.shoppingcart.shoppingcart_payments.Configuration;
-import hn.shoppingcart.shoppingcart_payments.dto.OrderSummaryDto;
+import hn.shoppingcart.shoppingcart_payments.dto.order.OrderConfirmRequestDto;
+import hn.shoppingcart.shoppingcart_payments.dto.order.OrderSummaryDto;
 
 @Component
 public class OrderServiceClient {
@@ -22,7 +23,7 @@ public class OrderServiceClient {
 	@Autowired
 	private RestTemplate restTemplate;
 
-	public Optional<OrderSummaryDto> getOrderById(int id) {
+	public Optional<OrderSummaryDto> getOrderById(int id) throws Exception {
 		final String token = this.jwtServiceClient.getCurrentToken();
 
 		final String uri = Configuration.ORDERS_SERVICE_BASE_URL + "/" + id + "/summary";
@@ -34,8 +35,31 @@ public class OrderServiceClient {
 
 		final ResponseEntity<OrderSummaryDto> res = this.restTemplate.exchange(uri, HttpMethod.GET, req, OrderSummaryDto.class);
 
-		return !res.getStatusCode().is2xxSuccessful()
-			? Optional.empty()
-			: Optional.ofNullable(res.getBody());
+		if (res.getStatusCode().is5xxServerError()) {
+			throw new Exception("Internal server error");
+		}
+
+		return Optional.ofNullable(res.getBody());
+	}
+
+	public boolean confirmOrder(int orderId) throws Exception {
+		final String token = this.jwtServiceClient.getCurrentToken();
+
+		final String uri = Configuration.ORDERS_SERVICE_BASE_URL + "/confirm";
+
+		final HttpHeaders headers = new HttpHeaders();
+		headers.setBearerAuth(token);
+		//
+		final OrderConfirmRequestDto orderConfirmRequestDto = new OrderConfirmRequestDto(orderId);
+		//
+		final HttpEntity<?> req = new HttpEntity<>(orderConfirmRequestDto, headers);
+
+		final ResponseEntity<?> res = this.restTemplate.exchange(uri, HttpMethod.POST, req, String.class);
+
+		if (!res.getStatusCode().is2xxSuccessful()) {
+			throw new Exception("Error updating order status.");
+		}
+
+		return true;
 	}
 }

@@ -1,4 +1,4 @@
-package hn.shoppingcart.shoppingcart_payments.dto;
+package hn.shoppingcart.shoppingcart_payments.dto.order;
 
 import hn.shoppingcart.shoppingcart_payments.model.OrderDetail;
 import lombok.AllArgsConstructor;

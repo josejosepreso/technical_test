@@ -29,6 +29,7 @@ public class JwtService {
 		this.authorizations = new HashMap<>();
 
 		this.authorizations.put(Configuration.ORDERS_SERVICE_BASE_URL + "/create", List.of(UserRole.CLIENT_ROLE_DESCRIPTION));
+		this.authorizations.put(Configuration.ORDERS_SERVICE_BASE_URL + "/confirm", List.of(UserRole.CLIENT_ROLE_DESCRIPTION));
 		this.authorizations.put(Configuration.ORDERS_SERVICE_BASE_URL + "/all", List.of(UserRole.ADMIN_ROLE_DESCRIPTION));
 
 		this.authorizations.put(Configuration.PAYMENTS_SERVICE_BASE_URL + "/create", List.of(UserRole.CLIENT_ROLE_DESCRIPTION));
@@ -47,11 +48,11 @@ public class JwtService {
 	}
 
 	private String validateCredentials(String username, String password) throws Exception {
-		if (username.equals("user") && password.equals("user")) {
+		if (username.equals("user") && password.equals("abc123")) {
 			return UserRole.CLIENT_ROLE_DESCRIPTION;
 		}
 
-		if (username.equals("admin") && password.equals("admin")) {
+		if (username.equals("admin") && password.equals("def456")) {
 			return UserRole.ADMIN_ROLE_DESCRIPTION;
 		}
 
@@ -77,8 +78,6 @@ public class JwtService {
 	}
 
 	public boolean authorize(ValidateJwtRequestDto dto) {
-		System.out.println(dto.getUrl());
-		System.out.println(this.authorizations);
 		final List<String> roles = this.authorizations.get(dto.getUrl());
 
 		if (roles == null || roles.isEmpty()) {

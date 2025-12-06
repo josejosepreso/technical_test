@@ -1,4 +1,4 @@
-package hn.shoppingcart.shoppingcart_orders.model;
+package hn.shoppingcart.shoppingcart_payments.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class OrderStatus {
+public class PaymentStatus {
 	private int id;
 	private String description;
 }

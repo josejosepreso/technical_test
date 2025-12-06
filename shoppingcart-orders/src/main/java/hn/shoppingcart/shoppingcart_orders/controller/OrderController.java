@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import hn.shoppingcart.shoppingcart_orders.dto.order.OrderConfirmRequestDto;
 import hn.shoppingcart.shoppingcart_orders.dto.order.OrderRequestDto;
 import hn.shoppingcart.shoppingcart_orders.dto.order.OrderResponseDto;
 import hn.shoppingcart.shoppingcart_orders.service.OrderService;
@@ -53,6 +54,16 @@ public class OrderController {
 	public ResponseEntity<?> getByIdSummary(@PathVariable int id) {
 		try {
 			return ResponseEntity.ok(this.orderService.getByIdSummary(id));
+		} catch(Exception e) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+				.body(new ErrorResponse(e.getMessage()));
+		}
+	}
+
+	@PostMapping("/confirm")
+	public ResponseEntity<?> confirm(@RequestBody OrderConfirmRequestDto dto) {
+		try {
+			return ResponseEntity.ok(this.orderService.confirm(dto));
 		} catch(Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
 				.body(new ErrorResponse(e.getMessage()));
