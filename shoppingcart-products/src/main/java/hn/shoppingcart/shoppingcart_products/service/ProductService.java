@@ -34,13 +34,17 @@ public class ProductService {
 		return Arrays.stream(res.getBody()).toList();
 	}
 
-	public Product getById(int id) {
+	public Product getById(int id) throws Exception {
 		final String uri = Configuration.PRODUCTS_API_BASE_URL + String.format("/products/%s", id);
 
 		final ResponseEntity<Product> res = this.restTemplate.getForEntity(uri, Product.class);
 
 		if (!res.getStatusCode().is2xxSuccessful()) {
-			return null;
+			throw new Exception();
+		}
+
+		if (res.getBody() == null) {
+			throw new Exception(String.format("Product with id %s doesn't exist.", id));
 		}
 
 		return res.getBody();

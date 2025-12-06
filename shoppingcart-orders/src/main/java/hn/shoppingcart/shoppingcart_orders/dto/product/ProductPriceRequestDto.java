@@ -1,4 +1,4 @@
-package hn.shoppingcart.shoppingcart_orders.dto;
+package hn.shoppingcart.shoppingcart_orders.dto.product;
 
 import java.util.List;
 

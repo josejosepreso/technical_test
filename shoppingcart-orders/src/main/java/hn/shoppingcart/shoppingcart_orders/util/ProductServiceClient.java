@@ -1,4 +1,4 @@
-package hn.shoppingcart.shoppingcart_orders.service;
+package hn.shoppingcart.shoppingcart_orders.util;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -6,14 +6,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import hn.shoppingcart.shoppingcart_orders.Configuration;
-import hn.shoppingcart.shoppingcart_orders.dto.ProductPriceRequestDto;
-import hn.shoppingcart.shoppingcart_orders.dto.ProductPriceResponseDto;
+import hn.shoppingcart.shoppingcart_orders.dto.product.ProductPriceRequestDto;
+import hn.shoppingcart.shoppingcart_orders.dto.product.ProductPriceResponseDto;
 
-@Service
+@Component
 public class ProductServiceClient {
 	
 	@Autowired

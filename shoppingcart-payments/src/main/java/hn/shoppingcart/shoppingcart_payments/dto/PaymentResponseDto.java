@@ -10,6 +10,7 @@ import lombok.Data;
 public final class PaymentResponseDto {
 	private final int id;
 	private final int orderId;
+	private final int clientId;
 	private final List<OrderDetailDto> orderDetails;
 	private final String paymentMethodDescription;
 	private final Date date;
@@ -20,6 +21,7 @@ public final class PaymentResponseDto {
 	public PaymentResponseDto(Payment payment) {
 		this.id = payment.getId();
 		this.orderId = payment.getOrderId();
+		this.clientId = payment.getClientId();
 		this.orderDetails = payment.getOrderDetail().stream().map(OrderDetailDto::new).toList();
 		this.paymentMethodDescription = payment.getPaymentMethod().getDescription();
 		this.date = payment.getDate();

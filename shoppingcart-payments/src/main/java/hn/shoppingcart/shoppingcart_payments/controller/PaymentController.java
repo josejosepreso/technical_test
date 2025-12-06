@@ -11,12 +11,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import hn.shoppingcart.shoppingcart_payments.ErrorResponse;
 import hn.shoppingcart.shoppingcart_payments.dto.PaymentRequestDto;
 import hn.shoppingcart.shoppingcart_payments.dto.PaymentResponseDto;
 import hn.shoppingcart.shoppingcart_payments.service.PaymentService;
 
 @RestController
-@RequestMapping("/payments")
+@RequestMapping("/api/payments")
 public class PaymentController {
 
 	@Autowired
@@ -33,7 +34,7 @@ public class PaymentController {
 			return ResponseEntity.ok(this.paymentService.create(dto));
 		} catch(Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-				.body(String.format("{\"ok\": false, \"msg\": \"%s\"}", e.getMessage()));
+				.body(new ErrorResponse(e.getMessage()));
 		}
 	}
 }

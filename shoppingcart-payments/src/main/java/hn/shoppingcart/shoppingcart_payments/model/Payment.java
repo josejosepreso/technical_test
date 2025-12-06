@@ -18,6 +18,8 @@ public class Payment {
 
 	private int orderId;
 
+	private int clientId;
+
 	private List<OrderDetail> orderDetail;
 
 	private PaymentMethod paymentMethod;

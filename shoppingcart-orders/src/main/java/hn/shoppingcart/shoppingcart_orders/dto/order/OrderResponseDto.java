@@ -1,8 +1,9 @@
-package hn.shoppingcart.shoppingcart_orders.dto;
+package hn.shoppingcart.shoppingcart_orders.dto.order;
 
 import java.util.Date;
 import java.util.List;
 
+import hn.shoppingcart.shoppingcart_orders.dto.ClientDto;
 import hn.shoppingcart.shoppingcart_orders.model.Client;
 import hn.shoppingcart.shoppingcart_orders.model.Order;
 import lombok.Data;

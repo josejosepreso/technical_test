@@ -1,0 +1,400 @@
+{
+	"info": {
+		"_postman_id": "a7ce5bf4-ae78-4de8-b2f7-7f5510cb7638",
+		"name": "shopping_cart",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37013838"
+	},
+	"item": [
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "getAllProducts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{PRODUCTS_API_URL}}/all",
+							"host": [
+								"{{PRODUCTS_API_URL}}"
+							],
+							"path": [
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllProductsPricing",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{PRODUCTS_API_URL}}/pricing",
+							"host": [
+								"{{PRODUCTS_API_URL}}"
+							],
+							"path": [
+								"pricing"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getProductsPricing",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productsIds\": [1,2,3,4]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{PRODUCTS_API_URL}}/pricing",
+							"host": [
+								"{{PRODUCTS_API_URL}}"
+							],
+							"path": [
+								"pricing"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getProductById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{PRODUCTS_API_URL}}/100",
+							"host": [
+								"{{PRODUCTS_API_URL}}"
+							],
+							"path": [
+								"100"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "orders",
+			"item": [
+				{
+					"name": "createOrder",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlIiwicm9sZSI6IkNMSUVOVCIsImlhdCI6MTc2NTAwMTQ3NiwiZXhwIjoxNzY1MDAxNTM2fQ.0w8mDirTngKci6liaJ1bwN-n3qrCD1YEIOP3nLjnlR0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"clientId\": 1,\n    \"orderDetails\": [\n        {\n            \"productId\": 1,\n            \"quantity\": 4\n        }\n    ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ORDERS_API_URL}}/create",
+							"host": [
+								"{{ORDERS_API_URL}}"
+							],
+							"path": [
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllOrders",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"clientId\": 1,\n    \"orderDetails\": [\n        {\n            \"productId\": 1,\n            \"quantity\": 4\n        }\n    ]\n}\n"
+						},
+						"url": {
+							"raw": "{{ORDERS_API_URL}}/all",
+							"host": [
+								"{{ORDERS_API_URL}}"
+							],
+							"path": [
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOrderById",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"clientId\": 1,\n    \"orderDetails\": [\n        {\n            \"productId\": 1,\n            \"quantity\": 4\n        }\n    ]\n}\n"
+						},
+						"url": {
+							"raw": "{{ORDERS_API_URL}}/10",
+							"host": [
+								"{{ORDERS_API_URL}}"
+							],
+							"path": [
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOrderByIdSummary",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ORDERS_API_URL}}/1/summary",
+							"host": [
+								"{{ORDERS_API_URL}}"
+							],
+							"path": [
+								"1",
+								"summary"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "payments",
+			"item": [
+				{
+					"name": "createPayment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"paymentId\": 1,\n    \"orderId\": 1,\n    \"paymentMethodDescription\": \"CASH\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{PAYMENTS_API_URL}}/create",
+							"host": [
+								"{{PAYMENTS_API_URL}}"
+							],
+							"path": [
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllPayments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{PAYMENTS_API_URL}}/all",
+							"host": [
+								"{{PAYMENTS_API_URL}}"
+							],
+							"path": [
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "auth",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"jose\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SECURITY_API_URL}}/auth",
+							"host": [
+								"{{SECURITY_API_URL}}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SECURITY_API_URL}}/health",
+							"host": [
+								"{{SECURITY_API_URL}}"
+							],
+							"path": [
+								"health"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "validateToken",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlIiwicm9sZSI6IkNMSUVOVCIsImlhdCI6MTc2NTAwMDQ2OCwiZXhwIjoxNzY1MDAwNTI4fQ.qHa3d1f89kE2wzlUpQYvx0UYOIUnBBXX4j4aLp0D_Fs\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SECURITY_API_URL}}/validateToken",
+							"host": [
+								"{{SECURITY_API_URL}}"
+							],
+							"path": [
+								"validateToken"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "PRODUCTS_API_URL",
+			"value": ""
+		},
+		{
+			"key": "ORDERS_API_URL",
+			"value": ""
+		},
+		{
+			"key": "PAYMENTS_API_URL",
+			"value": ""
+		},
+		{
+			"key": "SECURITY_API_URL",
+			"value": ""
+		}
+	]
+}

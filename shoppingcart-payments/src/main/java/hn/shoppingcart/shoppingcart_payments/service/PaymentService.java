@@ -3,7 +3,6 @@ package hn.shoppingcart.shoppingcart_payments.service;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +14,7 @@ import hn.shoppingcart.shoppingcart_payments.dto.PaymentResponseDto;
 import hn.shoppingcart.shoppingcart_payments.model.OrderDetail;
 import hn.shoppingcart.shoppingcart_payments.model.Payment;
 import hn.shoppingcart.shoppingcart_payments.model.PaymentMethod;
+import hn.shoppingcart.shoppingcart_payments.util.OrderServiceClient;
 
 @Service
 public class PaymentService {
@@ -47,31 +47,24 @@ public class PaymentService {
 			throw new Exception(String.format("Payment with id %s already exists.", paymentRequestDto.getPaymentId()));
 		}
 
-		final Optional<OrderSummaryDto> orderSummary = this.orderServiceClient.getOrderById(paymentRequestDto.getOrderId());
-
-		if (orderSummary.isEmpty()) {
-			throw new Exception(String.format("Order width id %s doesn't exist.", paymentRequestDto.getOrderId()));
-		}
+		final OrderSummaryDto orderSummary = this.orderServiceClient.getOrderById(paymentRequestDto.getOrderId())
+			.orElseThrow(() -> new Exception(String.format("Order width id %s doesn't exist.", paymentRequestDto.getOrderId())));
 
 		// assuming paymentMethodDescription is unique
-		final Optional<PaymentMethod> paymentMethod = this.paymentMethods.stream()
+		final PaymentMethod paymentMethod = this.paymentMethods.stream()
 			.filter(pMethod -> pMethod.getDescription().equals(paymentRequestDto.getPaymentMethodDescription()))
-			.findFirst();
-
-		if (paymentMethod.isEmpty()) {
-			throw new IllegalArgumentException("Invalid payment method.");
-		}
+			.findFirst()
+			.orElseThrow(() -> new IllegalArgumentException("Invalid payment method."));
 
 		//
-		final double subtotal = orderSummary.get()
-			.getOrderDetails()
+		final double subtotal = orderSummary.getOrderDetails()
 			.stream()
 			.mapToDouble(orderDetails -> orderDetails.getQuantity() * orderDetails.getUnitPrice())
 			.sum();
 		final double tax = subtotal * Configuration.TAX_PERCENTAGE;
 		final double total = subtotal + tax;
 
-		final List<OrderDetail> orderDetails = orderSummary.get().getOrderDetails()
+		final List<OrderDetail> orderDetails = orderSummary.getOrderDetails()
 			.stream()
 			.map(oDetailDto -> new OrderDetail(oDetailDto.getProductId(), oDetailDto.getQuantity(), oDetailDto.getUnitPrice()))
 			.toList();
@@ -79,8 +72,9 @@ public class PaymentService {
 		final Payment payment = new Payment();
 		payment.setId(paymentRequestDto.getPaymentId());
 		payment.setOrderId(paymentRequestDto.getOrderId());
+		payment.setClientId(orderSummary.getClientId());
 		payment.setOrderDetail(orderDetails);
-		payment.setPaymentMethod(paymentMethod.get());
+		payment.setPaymentMethod(paymentMethod);
 		payment.setDate(new Date());
 		payment.setSubtotal(subtotal);
 		payment.setTax(tax);

@@ -1,4 +1,4 @@
-package hn.shoppingcart.shoppingcart_orders.dto;
+package hn.shoppingcart.shoppingcart_orders.dto.order;
 
 import hn.shoppingcart.shoppingcart_orders.model.OrderDetail;
 import lombok.Data;

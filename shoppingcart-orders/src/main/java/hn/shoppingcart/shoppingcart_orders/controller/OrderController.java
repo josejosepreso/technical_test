@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import hn.shoppingcart.shoppingcart_orders.dto.OrderRequestDto;
-import hn.shoppingcart.shoppingcart_orders.dto.OrderResponseDto;
-import hn.shoppingcart.shoppingcart_orders.dto.OrderSummaryResponseDto;
+import hn.shoppingcart.shoppingcart_orders.dto.order.OrderRequestDto;
+import hn.shoppingcart.shoppingcart_orders.dto.order.OrderResponseDto;
 import hn.shoppingcart.shoppingcart_orders.service.OrderService;
+import hn.shoppingcart.shoppingcart_orders.util.ErrorResponse;
 
 @RestController
-@RequestMapping("/orders")
+@RequestMapping("/api/orders")
 public class OrderController {
 
 	@Autowired
@@ -30,8 +30,13 @@ public class OrderController {
 	}
 
 	@GetMapping("/{id}")
-	public OrderResponseDto getByIdDto(@PathVariable int id) {
-		return this.orderService.getByIdDto(id).orElse(null);
+	public ResponseEntity<?> getByIdDto(@PathVariable int id) {
+		try {
+			return ResponseEntity.ok(this.orderService.getByIdDto(id));
+		} catch(Exception e) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+				.body(new ErrorResponse(e.getMessage()));
+		}
 	}
 
 	@PostMapping("/create")
@@ -40,12 +45,17 @@ public class OrderController {
 			return ResponseEntity.ok(this.orderService.create(dto));
 		} catch(Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-				.body(String.format("{\"ok\": false, \"msg\": \"%s\"}", e.getMessage()));
+				.body(new ErrorResponse(e.getMessage()));
 		}
 	}
 
 	@GetMapping("/{id}/summary")
-	public OrderSummaryResponseDto getByIdSummary(@PathVariable int id) {
-		return this.orderService.getByIdSummary(id).orElse(null);
+	public ResponseEntity<?> getByIdSummary(@PathVariable int id) {
+		try {
+			return ResponseEntity.ok(this.orderService.getByIdSummary(id));
+		} catch(Exception e) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+				.body(new ErrorResponse(e.getMessage()));
+		}
 	}
 }

@@ -9,15 +9,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import hn.shoppingcart.shoppingcart_orders.dto.OrderDetailRequestDto;
-import hn.shoppingcart.shoppingcart_orders.dto.OrderRequestDto;
-import hn.shoppingcart.shoppingcart_orders.dto.OrderResponseDto;
-import hn.shoppingcart.shoppingcart_orders.dto.OrderSummaryResponseDto;
-import hn.shoppingcart.shoppingcart_orders.dto.ProductPriceResponseDto;
+import hn.shoppingcart.shoppingcart_orders.dto.order.OrderDetailRequestDto;
+import hn.shoppingcart.shoppingcart_orders.dto.order.OrderRequestDto;
+import hn.shoppingcart.shoppingcart_orders.dto.order.OrderResponseDto;
+import hn.shoppingcart.shoppingcart_orders.dto.order.OrderSummaryResponseDto;
+import hn.shoppingcart.shoppingcart_orders.dto.product.ProductPriceResponseDto;
 import hn.shoppingcart.shoppingcart_orders.model.Client;
 import hn.shoppingcart.shoppingcart_orders.model.Order;
 import hn.shoppingcart.shoppingcart_orders.model.OrderDetail;
 import hn.shoppingcart.shoppingcart_orders.model.OrderStatus;
+import hn.shoppingcart.shoppingcart_orders.util.ProductServiceClient;
 
 @RestController
 @RequestMapping("/orders")
@@ -58,12 +59,16 @@ public class OrderService {
 			.findFirst();
 	}
 
-	public Optional<OrderSummaryResponseDto> getByIdSummary(int id) {
-		return this.getById(id).map(OrderSummaryResponseDto::new);
+	public OrderSummaryResponseDto getByIdSummary(int id) throws Exception {
+		return this.getById(id)
+			.map(OrderSummaryResponseDto::new)
+			.orElseThrow(() -> new Exception(String.format("Order with id %s doesn't exist.", id)));
 	}
 
-	public Optional<OrderResponseDto> getByIdDto(int id) {
-		return this.getById(id).map(OrderResponseDto::new);
+	public OrderResponseDto getByIdDto(int id) throws Exception {
+		return this.getById(id)
+			.map(OrderResponseDto::new)
+			.orElseThrow(() -> new Exception(String.format("Order with id %s doesn't exist.", id)));
 	}
 
 	public OrderResponseDto create(OrderRequestDto dto) throws Exception {
@@ -74,13 +79,10 @@ public class OrderService {
 		}
 
 		// assuming clientId is unique
-		final Optional<Client> client = this.clients.stream()
+		final Client client = this.clients.stream()
 			.filter(c -> c.getId() == dto.getClientId())
-			.findFirst();
-
-		if (client.isEmpty()) {
-			throw new Exception(String.format("Client with id %s doesn't exists.", dto.getClientId()));
-		}
+			.findFirst()
+			.orElseThrow(() -> new Exception(String.format("Client with id %s doesn't exists.", dto.getClientId())));
 
 		final Optional<OrderStatus> orderStatus = this.orderStatus.stream()
 			.filter(oStatus -> oStatus.getDescription().equals("PENDING"))
@@ -88,7 +90,7 @@ public class OrderService {
 		//
 		final Order order = new Order();
 		order.setId(id);
-		order.setClient(client.get());
+		order.setClient(client);
 		order.setDate(new Date());
 		order.setStatus(orderStatus.get());
 
@@ -106,22 +108,19 @@ public class OrderService {
 			.map(OrderDetailRequestDto::getProductId)
 			.toList();
 
-		final List<ProductPriceResponseDto> prices = this.productServiceClient.fetchProductsPricing(productsIds);
+		final List<ProductPriceResponseDto> pricing = this.productServiceClient.fetchProductsPricing(productsIds);
 
 		List<OrderDetail> orderDetails = new ArrayList<>();
 
 		for (OrderDetailRequestDto orderDetailRequestDto : dtos) {
 			int productId = orderDetailRequestDto.getProductId();
 
-			Optional<ProductPriceResponseDto> productPriceDto = prices.stream()
+			ProductPriceResponseDto productPriceDto = pricing.stream()
 				.filter(p -> p.getProductId() == productId)
-				.findFirst();
+				.findFirst()
+				.orElseThrow(() -> new IllegalArgumentException(String.format("Product width id %s doesn't exist.", productId)));
 
-			if (productPriceDto.isEmpty()) {
-				throw new IllegalArgumentException(String.format("Product width id %s doesn't exist.", productId));
-			}
-
-			orderDetails.add(new OrderDetail(order, productId, productPriceDto.get().getUnitPrice(), orderDetailRequestDto.getQuantity()));
+			orderDetails.add(new OrderDetail(order, productId, productPriceDto.getUnitPrice(), orderDetailRequestDto.getQuantity()));
 		}
 
 		return orderDetails;
