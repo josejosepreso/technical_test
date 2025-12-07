@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import hn.shoppingcart.shoppingcart_orders.dto.order.OrderCancelRequestDto;
 import hn.shoppingcart.shoppingcart_orders.dto.order.OrderConfirmRequestDto;
 import hn.shoppingcart.shoppingcart_orders.dto.order.OrderRequestDto;
 import hn.shoppingcart.shoppingcart_orders.dto.order.OrderResponseDto;
@@ -40,16 +41,6 @@ public class OrderController {
 		}
 	}
 
-	@PostMapping("/create")
-	public ResponseEntity<?> create(@RequestBody OrderRequestDto dto) {
-		try {
-			return ResponseEntity.ok(this.orderService.create(dto));
-		} catch(Exception e) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-				.body(new ErrorResponse(e.getMessage()));
-		}
-	}
-
 	@GetMapping("/{id}/summary")
 	public ResponseEntity<?> getByIdSummary(@PathVariable int id) {
 		try {
@@ -60,10 +51,30 @@ public class OrderController {
 		}
 	}
 
+	@PostMapping("/create")
+	public ResponseEntity<?> create(@RequestBody OrderRequestDto dto) {
+		try {
+			return ResponseEntity.ok(this.orderService.create(dto));
+		} catch(Exception e) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+				.body(new ErrorResponse(e.getMessage()));
+		}
+	}
+
 	@PostMapping("/confirm")
 	public ResponseEntity<?> confirm(@RequestBody OrderConfirmRequestDto dto) {
 		try {
 			return ResponseEntity.ok(this.orderService.confirm(dto));
+		} catch(Exception e) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+				.body(new ErrorResponse(e.getMessage()));
+		}
+	}
+
+	@PostMapping("/cancel")
+	public ResponseEntity<?> cancel(@RequestBody OrderCancelRequestDto dto) {
+		try {
+			return ResponseEntity.ok(this.orderService.cancel(dto));
 		} catch(Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
 				.body(new ErrorResponse(e.getMessage()));

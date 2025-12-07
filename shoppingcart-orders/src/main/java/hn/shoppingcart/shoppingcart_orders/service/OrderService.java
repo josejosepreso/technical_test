@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import hn.shoppingcart.shoppingcart_orders.dto.order.OrderCancelRequestDto;
 import hn.shoppingcart.shoppingcart_orders.dto.order.OrderConfirmRequestDto;
 import hn.shoppingcart.shoppingcart_orders.dto.order.OrderDetailRequestDto;
 import hn.shoppingcart.shoppingcart_orders.dto.order.OrderRequestDto;
@@ -32,18 +33,10 @@ public class OrderService {
 
 	private List<Order> orders;
 
-	private List<OrderStatus> orderStatus;
-
 	private List<Client> clients;
 
 	public OrderService() {
 		this.orders = new ArrayList<>();
-
-		this.orderStatus = List.of(
-			new OrderStatus(1, "CONFIRMED"),
-			new OrderStatus(1, "PENDING"),
-			new OrderStatus(3, "CANCELLED")
-		);
 
 		this.clients = List.of(
 			new Client(1, "Jose", "Bautista", "jose@gmail.com", "11223344", new Date()),
@@ -82,21 +75,41 @@ public class OrderService {
 			.findFirst()
 			.orElseThrow(() -> new Exception(String.format("Order with id %s doesn't exist.", orderId)));
 
-		final OrderStatus orderStatus = this.orderStatus.stream()
-			.filter(oStatus -> oStatus.getDescription().equals("CONFIRMED"))
-			.findFirst()
-			.orElseThrow(() -> new Exception("Impossible event."));
+		if (!order.getStatus().equals(OrderStatus.PENDING.name())) {
+			throw new Exception("Order not in \"PENDING\" status.");
+		}
 
-		order.setStatus(orderStatus);
+		order.setStatus(OrderStatus.CONFIRMED.name());
+
+		return new OrderResponseDto(order);
+	}
+
+	public OrderResponseDto cancel(OrderCancelRequestDto dto) throws Exception {
+		final int orderId = dto.getOrderId();
+		//
+		final Order order = this.orders.stream()
+			.filter(o -> o.getId() == orderId)
+			.findFirst()
+			.orElseThrow(() -> new Exception(String.format("Order with id %s doesn't exist.", orderId)));
+
+		if (!order.getStatus().equals(OrderStatus.PENDING.name())) {
+			throw new Exception("Order not in \"PENDING\" status.");
+		}
+
+		order.setStatus(OrderStatus.CANCELLED.name());
 
 		return new OrderResponseDto(order);
 	}
 
 	public OrderResponseDto create(OrderRequestDto dto) throws Exception {
-		final int id = dto.getId();
+		final int orderId = dto.getId();
 
-		if (this.getById(id).isPresent()) {
-			throw new Exception(String.format("Order width id %s already exists.", id));
+		if (orderId < 1) {
+			throw new Exception(String.format("Invalid order id: %s", orderId));
+		}
+
+		if (this.getById(orderId).isPresent()) {
+			throw new Exception(String.format("Order width id %s already exists.", orderId));
 		}
 
 		// assuming clientId is unique
@@ -105,17 +118,12 @@ public class OrderService {
 			.findFirst()
 			.orElseThrow(() -> new Exception(String.format("Client with id %s doesn't exists.", dto.getClientId())));
 
-		final OrderStatus orderStatus = this.orderStatus.stream()
-			.filter(oStatus -> oStatus.getDescription().equals("PENDING"))
-			.findFirst()
-			.orElseThrow(() -> new Exception("Impossible event"));
-
 		//
 		final Order order = new Order();
-		order.setId(id);
+		order.setId(orderId);
 		order.setClient(client);
 		order.setDate(new Date());
-		order.setStatus(orderStatus);
+		order.setStatus(OrderStatus.PENDING.name());
 
 		final List<OrderDetail> orderDetails = this.mapOrderDetails(order, dto.getOrderDetails());
 

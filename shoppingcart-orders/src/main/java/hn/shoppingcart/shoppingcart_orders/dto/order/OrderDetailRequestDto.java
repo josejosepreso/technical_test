@@ -8,8 +8,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class OrderDetailRequestDto {
-
 	private final int productId;
-
 	private final int quantity;
 }

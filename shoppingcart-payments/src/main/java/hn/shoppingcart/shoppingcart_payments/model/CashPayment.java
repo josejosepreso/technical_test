@@ -1,7 +1,4 @@
 package hn.shoppingcart.shoppingcart_payments.model;
 
-public enum PaymentStatus {
-	PENDING,
-	PAID,
-	CANCELLED
+public class CashPayment extends Payment {
 }

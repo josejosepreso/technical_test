@@ -22,7 +22,7 @@ public final class OrderResponseDto {
 	public OrderResponseDto(Order order) {
 		this.id = order.getId();
 		this.date = order.getDate();
-		this.orderStatusDescription = order.getStatus().getDescription();
+		this.orderStatusDescription = order.getStatus();
 		this.orderDetails = order.getOrderDetails().stream().map(OrderDetailResponseDto::new).toList();
 		this.client = new ClientDto(order.getClient());
 	}

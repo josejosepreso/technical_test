@@ -1,19 +1,18 @@
 package hn.shoppingcart.shoppingcart_payments.service;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import hn.shoppingcart.shoppingcart_payments.Configuration;
-import hn.shoppingcart.shoppingcart_payments.dto.order.OrderSummaryDto;
+import hn.shoppingcart.shoppingcart_payments.dto.payment.PaymentCancelRequestDto;
+import hn.shoppingcart.shoppingcart_payments.dto.payment.CashPaymentConfirmRequestDto;
 import hn.shoppingcart.shoppingcart_payments.dto.payment.PaymentRequestDto;
-import hn.shoppingcart.shoppingcart_payments.dto.payment.PaymentResponseDto;
-import hn.shoppingcart.shoppingcart_payments.model.OrderDetail;
+import hn.shoppingcart.shoppingcart_payments.mapper.PaymentMapper;
+import hn.shoppingcart.shoppingcart_payments.model.CardPayment;
+import hn.shoppingcart.shoppingcart_payments.model.CashPayment;
 import hn.shoppingcart.shoppingcart_payments.model.Payment;
-import hn.shoppingcart.shoppingcart_payments.model.PaymentMethod;
 import hn.shoppingcart.shoppingcart_payments.model.PaymentStatus;
 import hn.shoppingcart.shoppingcart_payments.util.OrderServiceClient;
 
@@ -21,91 +20,95 @@ import hn.shoppingcart.shoppingcart_payments.util.OrderServiceClient;
 public class PaymentService {
 
 	@Autowired
+	private PaymentMapper paymentMapper;
+
+	@Autowired
 	private OrderServiceClient orderServiceClient;
 
 	private List<Payment> payments;
 
-	private List<PaymentMethod> paymentMethods;
-
-	private List<PaymentStatus> paymentStatus;
-
 	public PaymentService() {
 		this.payments = new ArrayList<>();
-
-		this.paymentMethods = List.of(
-			new PaymentMethod(1, "CARD"),
-			new PaymentMethod(2, "CASH")
-		);
-
-		this.paymentStatus = List.of(
-			new PaymentStatus(1, "PENDING"),
-			new PaymentStatus(2, "PAID"),
-			new PaymentStatus(3, "CANCELLED")
-		);
 	}
 
-	public List<PaymentResponseDto> getAll() {
-		return this.payments.stream().map(PaymentResponseDto::new).toList();
+	public List<Payment> getAll() {
+		return this.payments;
 	}
 
-	public PaymentResponseDto create(PaymentRequestDto paymentRequestDto) throws Exception {
+	private void processPayment(Payment payment) throws Exception {
+		if (payment instanceof CardPayment) {
+			this.orderServiceClient.confirmOrder(payment.getOrderId());
+			payment.setPaymentStatus(PaymentStatus.PAID.name());
+			return;
+		}
+
+		if (payment instanceof CashPayment) {
+			this.orderServiceClient.confirmOrder(payment.getOrderId());
+			return;
+		}
+
+		throw new IllegalArgumentException("Impossible event.");
+	}
+
+	public Payment create(PaymentRequestDto paymentRequestDto) throws Exception {
+		final int paymentId = paymentRequestDto.getPaymentId();
+
+		if (paymentId < 1) {
+			throw new Exception(String.format("Invalid payment id: %s", paymentId));
+		}
+
 		// assuming paymentId is unique
 		final boolean paymentExistsById = this.payments.stream()
-			.anyMatch(p -> p.getId() == paymentRequestDto.getPaymentId());
+			.anyMatch(p -> p.getId() == paymentId);
 		//
 		if (paymentExistsById) {
-			throw new Exception(String.format("Payment with id %s already exists.", paymentRequestDto.getPaymentId()));
+			throw new Exception(String.format("Payment with id %s already exists.", paymentId));
 		}
 
-		final OrderSummaryDto orderSummary = this.orderServiceClient.getOrderById(paymentRequestDto.getOrderId())
-			.orElseThrow(() -> new Exception(String.format("Order width id %s doesn't exist.", paymentRequestDto.getOrderId())));
+		final Payment payment = this.paymentMapper.toEntity(paymentRequestDto);
 
-		if (!orderSummary.getStatus().equals("PENDING")) {
-			throw new Exception("Order not in \"PENDING\" status.");
-		}
-
-		//
-		final double subtotal = orderSummary.getOrderDetails()
-			.stream()
-			.mapToDouble(orderDetails -> orderDetails.getQuantity() * orderDetails.getUnitPrice())
-			.sum();
-		final double tax = subtotal * Configuration.TAX_PERCENTAGE;
-		final double total = subtotal + tax;
-
-		final List<OrderDetail> orderDetails = orderSummary.getOrderDetails()
-			.stream()
-			.map(oDetailDto -> new OrderDetail(oDetailDto.getProductId(), oDetailDto.getQuantity(), oDetailDto.getUnitPrice()))
-			.toList();
-
-		// assuming paymentMethodDescription is unique
-		final PaymentMethod paymentMethod = this.paymentMethods.stream()
-			.filter(pMethod -> pMethod.getDescription().equals(paymentRequestDto.getPaymentMethodDescription()))
-			.findFirst()
-			.orElseThrow(() -> new IllegalArgumentException("Invalid payment method."));
-
-		final PaymentStatus paymentStatus = this.paymentStatus.stream()
-			.filter(pStatus -> pStatus.getDescription().equals(paymentMethod.getDescription().equals("CASH") ? "PENDING" : "PAID"))
-			.findFirst()
-			.orElseThrow(() -> new Exception("Impossible event."));
-
-		final Payment payment = new Payment();
-		payment.setId(paymentRequestDto.getPaymentId());
-		payment.setOrderId(paymentRequestDto.getOrderId());
-		payment.setClientId(orderSummary.getClientId());
-		payment.setOrderDetail(orderDetails);
-		payment.setPaymentMethod(paymentMethod);
-		payment.setDate(new Date());
-		payment.setSubtotal(subtotal);
-		payment.setTax(tax);
-		payment.setTotal(total);
-		payment.setPaymentStatus(paymentStatus);
-
-		if (!paymentStatus.getDescription().equals("PENDING")) {
-			this.orderServiceClient.confirmOrder(paymentRequestDto.getOrderId());
-		}
+		this.processPayment(payment);
 
 		this.payments.add(payment);
 
-		return new PaymentResponseDto(payment);
+		return payment;
+	}
+
+	public CashPayment confirmCashPayment(CashPaymentConfirmRequestDto confirmCashPaymentRequestDto) throws Exception {
+		final int paymentId = confirmCashPaymentRequestDto.getPaymentId();
+
+		final Payment payment = this.payments.stream()
+			.filter(p -> p.getId() == paymentId)
+			.findFirst()
+			.orElseThrow(() -> new Exception(String.format("Payment with id %s doesn't exist.", paymentId)));
+
+		if (!(payment instanceof CashPayment)) {
+			throw new Exception("Not a cash payment!");
+		}
+
+		if (!payment.getPaymentStatus().equals(PaymentStatus.PENDING.name())) {
+			throw new Exception("Payment not in \"PENDING\" status.");
+		}
+
+		payment.setPaymentStatus(PaymentStatus.PAID.name());
+
+		return (CashPayment) payment;
+	}
+
+	public Payment cancelPayment(PaymentCancelRequestDto cancelPaymentRequestDto) throws Exception {
+		final int paymentId = cancelPaymentRequestDto.getPaymentId();
+
+		final Payment payment = this.payments.stream()
+			.filter(p -> p.getId() == paymentId)
+			.findFirst()
+			.orElseThrow(() -> new Exception(String.format("Payment with id %s doesn't exist.", paymentId)));
+
+		if (!payment.getPaymentStatus().equals(PaymentStatus.PENDING.name())) {
+			throw new Exception("Payment not in \"PENDING\" status.");
+		}
+
+		payment.setPaymentStatus(PaymentStatus.CANCELLED.name());
+
+		return payment;
 	}
 }

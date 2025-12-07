@@ -1,33 +1,8 @@
----
-title: shopping_cart_responses
-language_tabs:
-  - shell: Shell
-  - http: HTTP
-  - javascript: JavaScript
-  - ruby: Ruby
-  - python: Python
-  - php: PHP
-  - java: Java
-  - go: Go
-toc_footers: []
-includes: []
-search: true
-code_clipboard: true
-highlight_theme: darkula
-headingLevel: 2
-generator: "@tarslib/widdershins v4.0.30"
+# Shopping cart API
 
----
+## Products
 
-# shopping_cart_responses
-
-Base URLs:
-
-# Authentication
-
-# products
-
-## GET getAllProductsPricing
+#### GET getAllProductsPricing
 
 GET /pricing
 
@@ -120,22 +95,7 @@ GET /pricing
 ]
 ```
 
-### Responses
-
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
-
-### Responses Data Schema
-
-HTTP Status Code **200**
-
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» productId|integer|true|none||none|
-|» unitPrice|number|true|none||none|
-
-## POST getProductsPricing
+#### POST getProductsPricing
 
 POST /pricing
 
@@ -152,13 +112,6 @@ POST /pricing
 }
 ```
 
-### Params
-
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|Content-Type|header|string| yes |none|
-|body|body|object| no |none|
-|» productsIds|body|[integer]| yes |none|
 
 > Response Examples
 
@@ -185,24 +138,60 @@ POST /pricing
 ]
 ```
 
-### Responses
+## auth
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+#### POST authAdmin
 
-### Responses Data Schema
+POST /auth
 
-HTTP Status Code **200**
+> Body Parameters
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» productId|integer|true|none||none|
-|» unitPrice|number|true|none||none|
+```json
+{
+  "username": "admin",
+  "password": "def456"
+}
+```
 
-# orders
+> Response Examples
 
-## GET getOrderById
+> 200 Response
+
+```json
+{
+  "token": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NjUxMjQxNTMsImV4cCI6MTc2NTEyNDQ1M30.0Zh9M6S52PxB00aJ2dlQjrF43LZDpnpGbEM3FHcdXM8"
+}
+```
+
+
+
+#### POST validateAuth
+
+POST /validateAuth
+
+> Body Parameters
+
+```json
+{
+  "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlIiwicm9sZSI6IkNMSUVOVCIsImlhdCI6MTc2NTAwMDQ2OCwiZXhwIjoxNzY1MDAwNTI4fQ.qHa3d1f89kE2wzlUpQYvx0UYOIUnBBXX4j4aLp0D_Fa",
+  "url": "http://localhost:8081/api/orders/all"
+}
+```
+
+
+> Response Examples
+
+> 200 Response
+
+```json
+{
+  "valid": false
+}
+```
+
+## orders
+
+#### GET getOrderById
 
 GET /10
 
@@ -221,18 +210,7 @@ GET /10
 }
 ```
 
-### Params
 
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|Content-Type|header|string| yes |none|
-|Authorization|header|string| yes |none|
-|body|body|object| no |none|
-|» id|body|integer| yes |none|
-|» clientId|body|integer| yes |none|
-|» orderDetails|body|[object]| yes |none|
-|»» productId|body|integer| no |none|
-|»» quantity|body|integer| no |none|
 
 > Response Examples
 
@@ -257,38 +235,10 @@ GET /10
 }
 ```
 
-### Responses
+#### GET getOrderByIdSummary
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+GET /2/summary
 
-### Responses Data Schema
-
-HTTP Status Code **200**
-
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» client|object|true|none||none|
-|»» clientId|integer|true|none||none|
-|»» fullName|string|true|none||none|
-|» date|string|true|none||none|
-|» id|integer|true|none||none|
-|» orderDetails|[object]|true|none||none|
-|»» productId|integer|false|none||none|
-|»» quantity|integer|false|none||none|
-|»» unitPrice|number|false|none||none|
-|» orderStatusDescription|string|true|none||none|
-
-## GET getOrderByIdSummary
-
-GET /3/summary
-
-### Params
-
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|Authorization|header|string| yes |none|
 
 > Response Examples
 
@@ -300,51 +250,16 @@ GET /3/summary
   "orderDetails": [
     {
       "productId": 1,
-      "quantity": 4,
+      "quantity": 6,
       "unitPrice": 109.95
-    },
-    {
-      "productId": 15,
-      "quantity": 10,
-      "unitPrice": 56.99
-    },
-    {
-      "productId": 4,
-      "quantity": 12,
-      "unitPrice": 15.99
-    },
-    {
-      "productId": 15,
-      "quantity": 16,
-      "unitPrice": 56.99
     }
   ],
-  "orderId": 3,
-  "status": "CONFIRMED"
+  "orderId": 2,
+  "status": "PENDING"
 }
 ```
 
-### Responses
-
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
-
-### Responses Data Schema
-
-HTTP Status Code **200**
-
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» clientId|integer|true|none||none|
-|» orderDetails|[object]|true|none||none|
-|»» productId|integer|true|none||none|
-|»» quantity|integer|true|none||none|
-|»» unitPrice|number|true|none||none|
-|» orderId|integer|true|none||none|
-|» status|string|true|none||none|
-
-## POST confirmOrder
+#### POST confirmOrder
 
 POST /confirm
 
@@ -352,18 +267,9 @@ POST /confirm
 
 ```json
 {
-  "orderId": 3
+  "orderId": 2
 }
 ```
-
-### Params
-
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|Content-Type|header|string| yes |none|
-|Authorization|header|string| yes |none|
-|body|body|object| no |none|
-|» orderId|body|integer| yes |none|
 
 > Response Examples
 
@@ -375,8 +281,54 @@ POST /confirm
     "clientId": 1,
     "fullName": "Jose Bautista"
   },
-  "date": "2025-12-07T16:06:20.471Z",
-  "id": 3,
+  "date": "2025-12-07T23:12:33.876Z",
+  "id": 2,
+  "orderDetails": [
+    {
+      "productId": 1,
+      "quantity": 6,
+      "unitPrice": 109.95
+    }
+  ],
+  "orderStatusDescription": "CONFIRMED"
+}
+```
+
+> 400 Response
+
+```json
+{
+  "msg": "Order not in \"PENDING\" status.",
+  "ok": false
+}
+```
+
+
+#### POST cancelOrder
+
+POST /cancel
+
+> Body Parameters
+
+```json
+{
+  "orderId": 13
+}
+```
+
+
+> Response Examples
+
+> 200 Response
+
+```json
+{
+  "client": {
+    "clientId": 1,
+    "fullName": "Jose Bautista"
+  },
+  "date": "2025-12-07T23:12:49.768Z",
+  "id": 13,
   "orderDetails": [
     {
       "productId": 1,
@@ -399,44 +351,25 @@ POST /confirm
       "unitPrice": 56.99
     }
   ],
-  "orderStatusDescription": "CONFIRMED"
+  "orderStatusDescription": "CANCELLED"
 }
 ```
 
-### Responses
+> 400 Response
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+```json
+{
+  "msg": "Order not in \"PENDING\" status.",
+  "ok": false
+}
+```
 
-### Responses Data Schema
 
-HTTP Status Code **200**
+## payments
 
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» client|object|true|none||none|
-|»» clientId|integer|true|none||none|
-|»» fullName|string|true|none||none|
-|» date|string|true|none||none|
-|» id|integer|true|none||none|
-|» orderDetails|[object]|true|none||none|
-|»» productId|integer|true|none||none|
-|»» quantity|integer|true|none||none|
-|»» unitPrice|number|true|none||none|
-|» orderStatusDescription|string|true|none||none|
-
-# payments
-
-## GET getAllPayments
+#### GET getAllPayments
 
 GET /all
-
-### Params
-
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|Authorization|header|string| yes |none|
 
 > Response Examples
 
@@ -446,85 +379,41 @@ GET /all
 [
   {
     "clientId": 1,
-    "date": "2025-12-07T16:08:54.451Z",
-    "id": 3,
-    "orderDetails": [
-      {
-        "productId": 3,
-        "quantity": 666,
-        "unitPrice": 55.99
-      }
-    ],
-    "orderId": 2,
-    "paymentMethodDescription": "CASH",
-    "paymentStatusDescription": "PENDING",
-    "subtotal": 37289.340000000004,
-    "tax": 5593.401000000001,
-    "total": 42882.741
-  },
-  {
-    "clientId": 1,
-    "date": "2025-12-07T16:22:21.646Z",
-    "id": 54,
-    "orderDetails": [
-      {
-        "productId": 1,
-        "quantity": 4,
-        "unitPrice": 109.95
-      },
-      {
-        "productId": 15,
-        "quantity": 10,
-        "unitPrice": 56.99
-      },
-      {
-        "productId": 4,
-        "quantity": 12,
-        "unitPrice": 15.99
-      },
-      {
-        "productId": 15,
-        "quantity": 16,
-        "unitPrice": 56.99
-      }
-    ],
-    "orderId": 13,
-    "paymentMethodDescription": "CARD",
-    "paymentStatusDescription": "PAID",
+    "date": "2025-12-07T23:29:38.468Z",
+    "id": 2,
+    "orderId": 20,
+    "paymentStatus": "PENDING",
     "subtotal": 2113.42,
     "tax": 317.013,
     "total": 2430.433
+  },
+  {
+    "cardNumber": "111222333",
+    "clientId": 1,
+    "date": "2025-12-07T23:31:42.637Z",
+    "id": 3,
+    "orderId": 40,
+    "paymentStatus": "PAID",
+    "subtotal": 659.7,
+    "tax": 98.955,
+    "total": 758.6550000000001
+  },
+  {
+    "clientId": 1,
+    "date": "2025-12-07T23:31:56.700Z",
+    "id": 5,
+    "orderId": 5,
+    "paymentStatus": "PENDING",
+    "subtotal": 218,
+    "tax": 32.699999999999996,
+    "total": 250.7
   }
 ]
 ```
 
-### Responses
 
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
 
-### Responses Data Schema
-
-HTTP Status Code **200**
-
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» clientId|integer|true|none||none|
-|» date|string|true|none||none|
-|» id|integer|true|none||none|
-|» orderDetails|[object]|true|none||none|
-|»» productId|integer|true|none||none|
-|»» quantity|integer|true|none||none|
-|»» unitPrice|number|true|none||none|
-|» orderId|integer|true|none||none|
-|» paymentMethodDescription|string|true|none||none|
-|» paymentStatusDescription|string|true|none||none|
-|» subtotal|number|true|none||none|
-|» tax|number|true|none||none|
-|» total|number|true|none||none|
-
-## POST createPayment
+#### POST cashPayment
 
 POST /create
 
@@ -532,22 +421,13 @@ POST /create
 
 ```json
 {
-  "paymentId": 54,
-  "orderId": 13,
-  "paymentMethodDescription": "CARD"
+  "paymentId": 5,
+  "orderId": 5,
+  "paymentMethodDescription": "CASH",
+  "cardNumber": ""
 }
 ```
 
-### Params
-
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|Content-Type|header|string| yes |none|
-|Authorization|header|string| yes |none|
-|body|body|object| no |none|
-|» paymentId|body|integer| yes |none|
-|» orderId|body|integer| yes |none|
-|» paymentMethodDescription|body|string| yes |none|
 
 > Response Examples
 
@@ -556,174 +436,13 @@ POST /create
 ```json
 {
   "clientId": 1,
-  "date": "2025-12-07T16:22:21.646Z",
-  "id": 54,
-  "orderDetails": [
-    {
-      "productId": 1,
-      "quantity": 4,
-      "unitPrice": 109.95
-    },
-    {
-      "productId": 15,
-      "quantity": 10,
-      "unitPrice": 56.99
-    },
-    {
-      "productId": 4,
-      "quantity": 12,
-      "unitPrice": 15.99
-    },
-    {
-      "productId": 15,
-      "quantity": 16,
-      "unitPrice": 56.99
-    }
-  ],
-  "orderId": 13,
-  "paymentMethodDescription": "CARD",
-  "paymentStatusDescription": "PAID",
-  "subtotal": 2113.42,
-  "tax": 317.013,
-  "total": 2430.433
+  "date": "2025-12-07T23:17:46.957Z",
+  "id": 2,
+  "orderId": 10,
+  "paymentStatus": "PENDING",
+  "subtotal": 659.7,
+  "tax": 98.955,
+  "total": 758.6550000000001
 }
 ```
-
-### Responses
-
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
-
-### Responses Data Schema
-
-HTTP Status Code **200**
-
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» clientId|integer|true|none||none|
-|» date|string|true|none||none|
-|» id|integer|true|none||none|
-|» orderDetails|[object]|true|none||none|
-|»» productId|integer|true|none||none|
-|»» quantity|integer|true|none||none|
-|»» unitPrice|number|true|none||none|
-|» orderId|integer|true|none||none|
-|» paymentMethodDescription|string|true|none||none|
-|» paymentStatusDescription|string|true|none||none|
-|» subtotal|number|true|none||none|
-|» tax|number|true|none||none|
-|» total|number|true|none||none|
-
-# auth
-
-## POST authAdmin
-
-POST /auth
-
-> Body Parameters
-
-```json
-{
-  "username": "admin",
-  "password": "def456"
-}
-```
-
-### Params
-
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|Content-Type|header|string| yes |none|
-|body|body|object| no |none|
-|» username|body|string| yes |none|
-|» password|body|string| yes |none|
-
-> Response Examples
-
-> 200 Response
-
-```json
-{
-  "token": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NjUxMjQxNTMsImV4cCI6MTc2NTEyNDQ1M30.0Zh9M6S52PxB00aJ2dlQjrF43LZDpnpGbEM3FHcdXM8"
-}
-```
-
-### Responses
-
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
-
-### Responses Data Schema
-
-HTTP Status Code **200**
-
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» token|string|true|none||none|
-
-## GET health
-
-GET /health
-
-> Response Examples
-
-> 200 Response
-
-### Responses
-
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
-
-### Responses Data Schema
-
-## POST validateToken
-
-POST /validateAuth
-
-> Body Parameters
-
-```json
-{
-  "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlIiwicm9sZSI6IkNMSUVOVCIsImlhdCI6MTc2NTAwMDQ2OCwiZXhwIjoxNzY1MDAwNTI4fQ.qHa3d1f89kE2wzlUpQYvx0UYOIUnBBXX4j4aLp0D_Fa",
-  "url": "http://localhost:8081/api/orders/all"
-}
-```
-
-### Params
-
-|Name|Location|Type|Required|Description|
-|---|---|---|---|---|
-|Content-Type|header|string| yes |none|
-|body|body|object| no |none|
-|» token|body|string| yes |none|
-|» url|body|string| yes |none|
-
-> Response Examples
-
-> 200 Response
-
-```json
-{
-  "valid": false
-}
-```
-
-### Responses
-
-|HTTP Status Code |Meaning|Description|Data schema|
-|---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
-
-### Responses Data Schema
-
-HTTP Status Code **200**
-
-|Name|Type|Required|Restrictions|Title|description|
-|---|---|---|---|---|---|
-|» valid|boolean|true|none||none|
-
-# Data Schema
 

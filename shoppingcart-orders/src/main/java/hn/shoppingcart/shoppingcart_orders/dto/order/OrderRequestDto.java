@@ -10,10 +10,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class OrderRequestDto {
-
 	private final int id;
-
 	private final int clientId;
-
 	private final List<OrderDetailRequestDto> orderDetails;
 }

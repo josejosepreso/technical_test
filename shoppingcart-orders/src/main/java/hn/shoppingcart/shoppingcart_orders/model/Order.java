@@ -20,7 +20,7 @@ public class Order {
 
 	private Date date;
 
-	private OrderStatus status;
+	private String status;
 
 	private List<OrderDetail> orderDetails;
 }

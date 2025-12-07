@@ -1,4 +1,4 @@
-package hn.shoppingcart.shoppingcart_orders.util;
+package hn.shoppingcart.shoppingcart_orders.filter;
 
 import java.io.IOException;
 
@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import hn.shoppingcart.shoppingcart_orders.Configuration;
+import hn.shoppingcart.shoppingcart_orders.util.JwtServiceClient;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

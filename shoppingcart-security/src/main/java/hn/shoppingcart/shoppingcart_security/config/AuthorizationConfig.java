@@ -17,11 +17,14 @@ public class AuthorizationConfig {
 		final Map<String, List<UserRole>> paths = new HashMap<>();
 
 		paths.put(Configuration.ORDERS_SERVICE_BASE_URL + "/create", List.of(UserRole.CLIENT));
-		paths.put(Configuration.ORDERS_SERVICE_BASE_URL + "/confirm", List.of(UserRole.CLIENT));
+		paths.put(Configuration.ORDERS_SERVICE_BASE_URL + "/confirm", List.of(UserRole.CLIENT, UserRole.ADMIN));
 		paths.put(Configuration.ORDERS_SERVICE_BASE_URL + "/all", List.of(UserRole.ADMIN));
+		paths.put(Configuration.ORDERS_SERVICE_BASE_URL + "/cancel", List.of(UserRole.ADMIN));
 
 		paths.put(Configuration.PAYMENTS_SERVICE_BASE_URL + "/create", List.of(UserRole.CLIENT));
 		paths.put(Configuration.PAYMENTS_SERVICE_BASE_URL + "/all", List.of(UserRole.ADMIN));
+		paths.put(Configuration.PAYMENTS_SERVICE_BASE_URL + "/cancel", List.of(UserRole.ADMIN));
+		paths.put(Configuration.PAYMENTS_SERVICE_BASE_URL + "/confirmCashPayment", List.of(UserRole.ADMIN));
 
 		return paths;
 	}

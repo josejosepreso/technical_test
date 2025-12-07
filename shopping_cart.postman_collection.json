@@ -42,11 +42,14 @@
 							},
 							"status": "OK",
 							"code": 200,
-							"_postman_previewlanguage": "",
+							"_postman_previewlanguage": "json",
 							"header": [
 								{
 									"key": "Content-Type",
-									"value": "application/json"
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
 								},
 								{
 									"key": "Transfer-Encoding",
@@ -54,7 +57,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 07 Dec 2025 16:14:35 GMT"
+									"value": "Sun, 07 Dec 2025 23:00:39 GMT"
 								},
 								{
 									"key": "Keep-Alive",
@@ -65,7 +68,13 @@
 									"value": "keep-alive"
 								}
 							],
-							"cookie": [],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
 							"body": "[\n    {\n        \"id\": 1,\n        \"title\": \"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops\",\n        \"price\": 109.95,\n        \"description\": \"Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday\",\n        \"category\": \"men's clothing\",\n        \"image\": \"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png\",\n        \"rating\": {\n            \"rate\": 3.9,\n            \"count\": 120\n        }\n    },\n    {\n        \"id\": 2,\n        \"title\": \"Mens Casual Premium Slim Fit T-Shirts \",\n        \"price\": 22.3,\n        \"description\": \"Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.\",\n        \"category\": \"men's clothing\",\n        \"image\": \"https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_t.png\",\n        \"rating\": {\n            \"rate\": 4.1,\n            \"count\": 259\n        }\n    },\n    {\n        \"id\": 3,\n        \"title\": \"Mens Cotton Jacket\",\n        \"price\": 55.99,\n        \"description\": \"great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day.\",\n        \"category\": \"men's clothing\",\n        \"image\": \"https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_t.png\",\n        \"rating\": {\n            \"rate\": 4.7,\n            \"count\": 500\n        }\n    },\n    {\n        \"id\": 4,\n        \"title\": \"Mens Casual Slim Fit\",\n        \"price\": 15.99,\n        \"description\": \"The color could be slightly different between on the screen and in practice. / Please note that body builds vary by person, therefore, detailed size information should be reviewed below on the product description.\",\n        \"category\": \"men's clothing\",\n        \"image\": \"https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_t.png\",\n        \"rating\": {\n            \"rate\": 2.1,\n            \"count\": 430\n        }\n    },\n    {\n        \"id\": 5,\n        \"title\": \"John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet\",\n        \"price\": 695,\n        \"description\": \"From our Legends Collection, the Naga was inspired by the mythical water dragon that protects the ocean's pearl. Wear facing inward to be bestowed with love and abundance, or outward for protection.\",\n        \"category\": \"jewelery\",\n        \"image\": \"https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_t.png\",\n        \"rating\": {\n            \"rate\": 4.6,\n            \"count\": 400\n        }\n    },\n    {\n        \"id\": 6,\n        \"title\": \"Solid Gold Petite Micropave \",\n        \"price\": 168,\n        \"description\": \"Satisfaction Guaranteed. Return or exchange any order within 30 days.Designed and sold by Hafeez Center in the United States. Satisfaction Guaranteed. Return or exchange any order within 30 days.\",\n        \"category\": \"jewelery\",\n        \"image\": \"https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_t.png\",\n        \"rating\": {\n            \"rate\": 3.9,\n            \"count\": 70\n        }\n    },\n    {\n        \"id\": 7,\n        \"title\": \"White Gold Plated Princess\",\n        \"price\": 9.99,\n        \"description\": \"Classic Created Wedding Engagement Solitaire Diamond Promise Ring for Her. Gifts to spoil your love more for Engagement, Wedding, Anniversary, Valentine's Day...\",\n        \"category\": \"jewelery\",\n        \"image\": \"https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_t.png\",\n        \"rating\": {\n            \"rate\": 3,\n            \"count\": 400\n        }\n    },\n    {\n        \"id\": 8,\n        \"title\": \"Pierced Owl Rose Gold Plated Stainless Steel Double\",\n        \"price\": 10.99,\n        \"description\": \"Rose Gold Plated Double Flared Tunnel Plug Earrings. Made of 316L Stainless Steel\",\n        \"category\": \"jewelery\",\n        \"image\": \"https://fakestoreapi.com/img/51UDEzMJVpL._AC_UL640_QL65_ML3_t.png\",\n        \"rating\": {\n            \"rate\": 1.9,\n            \"count\": 100\n        }\n    },\n    {\n        \"id\": 9,\n        \"title\": \"WD 2TB Elements Portable External Hard Drive - USB 3.0 \",\n        \"price\": 64,\n        \"description\": \"USB 3.0 and USB 2.0 Compatibility Fast data transfers Improve PC Performance High Capacity; Compatibility Formatted NTFS for Windows 10, Windows 8.1, Windows 7; Reformatting may be required for other operating systems; Compatibility may vary depending on user’s hardware configuration and operating system\",\n        \"category\": \"electronics\",\n        \"image\": \"https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_t.png\",\n        \"rating\": {\n            \"rate\": 3.3,\n            \"count\": 203\n        }\n    },\n    {\n        \"id\": 10,\n        \"title\": \"SanDisk SSD PLUS 1TB Internal SSD - SATA III 6 Gb/s\",\n        \"price\": 109,\n        \"description\": \"Easy upgrade for faster boot up, shutdown, application load and response (As compared to 5400 RPM SATA 2.5” hard drive; Based on published specifications and internal benchmarking tests using PCMark vantage scores) Boosts burst write performance, making it ideal for typical PC workloads The perfect balance of performance and reliability Read/write speeds of up to 535MB/s/450MB/s (Based on internal testing; Performance may vary depending upon drive capacity, host device, OS and application.)\",\n        \"category\": \"electronics\",\n        \"image\": \"https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_t.png\",\n        \"rating\": {\n            \"rate\": 2.9,\n            \"count\": 470\n        }\n    },\n    {\n        \"id\": 11,\n        \"title\": \"Silicon Power 256GB SSD 3D NAND A55 SLC Cache Performance Boost SATA III 2.5\",\n        \"price\": 109,\n        \"description\": \"3D NAND flash are applied to deliver high transfer speeds Remarkable transfer speeds that enable faster bootup and improved overall system performance. The advanced SLC Cache Technology allows performance boost and longer lifespan 7mm slim design suitable for Ultrabooks and Ultra-slim notebooks. Supports TRIM command, Garbage Collection technology, RAID, and ECC (Error Checking & Correction) to provide the optimized performance and enhanced reliability.\",\n        \"category\": \"electronics\",\n        \"image\": \"https://fakestoreapi.com/img/71kWymZ+c+L._AC_SX679_t.png\",\n        \"rating\": {\n            \"rate\": 4.8,\n            \"count\": 319\n        }\n    },\n    {\n        \"id\": 12,\n        \"title\": \"WD 4TB Gaming Drive Works with Playstation 4 Portable External Hard Drive\",\n        \"price\": 114,\n        \"description\": \"Expand your PS4 gaming experience, Play anywhere Fast and easy, setup Sleek design with high capacity, 3-year manufacturer's limited warranty\",\n        \"category\": \"electronics\",\n        \"image\": \"https://fakestoreapi.com/img/61mtL65D4cL._AC_SX679_t.png\",\n        \"rating\": {\n            \"rate\": 4.8,\n            \"count\": 400\n        }\n    },\n    {\n        \"id\": 13,\n        \"title\": \"Acer SB220Q bi 21.5 inches Full HD (1920 x 1080) IPS Ultra-Thin\",\n        \"price\": 599,\n        \"description\": \"21. 5 inches Full HD (1920 x 1080) widescreen IPS display And Radeon free Sync technology. No compatibility for VESA Mount Refresh Rate: 75Hz - Using HDMI port Zero-frame design | ultra-thin | 4ms response time | IPS panel Aspect ratio - 16: 9. Color Supported - 16. 7 million colors. Brightness - 250 nit Tilt angle -5 degree to 15 degree. Horizontal viewing angle-178 degree. Vertical viewing angle-178 degree 75 hertz\",\n        \"category\": \"electronics\",\n        \"image\": \"https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_t.png\",\n        \"rating\": {\n            \"rate\": 2.9,\n            \"count\": 250\n        }\n    },\n    {\n        \"id\": 14,\n        \"title\": \"Samsung 49-Inch CHG90 144Hz Curved Gaming Monitor (LC49HG90DMNXZA) – Super Ultrawide Screen QLED \",\n        \"price\": 999.99,\n        \"description\": \"49 INCH SUPER ULTRAWIDE 32:9 CURVED GAMING MONITOR with dual 27 inch screen side by side QUANTUM DOT (QLED) TECHNOLOGY, HDR support and factory calibration provides stunningly realistic and accurate color and contrast 144HZ HIGH REFRESH RATE and 1ms ultra fast response time work to eliminate motion blur, ghosting, and reduce input lag\",\n        \"category\": \"electronics\",\n        \"image\": \"https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_t.png\",\n        \"rating\": {\n            \"rate\": 2.2,\n            \"count\": 140\n        }\n    },\n    {\n        \"id\": 15,\n        \"title\": \"BIYLACLESEN Women's 3-in-1 Snowboard Jacket Winter Coats\",\n        \"price\": 56.99,\n        \"description\": \"Note:The Jackets is US standard size, Please choose size as your usual wear Material: 100% Polyester; Detachable Liner Fabric: Warm Fleece. Detachable Functional Liner: Skin Friendly, Lightweigt and Warm.Stand Collar Liner jacket, keep you warm in cold weather. Zippered Pockets: 2 Zippered Hand Pockets, 2 Zippered Pockets on Chest (enough to keep cards or keys)and 1 Hidden Pocket Inside.Zippered Hand Pockets and Hidden Pocket keep your things secure. Humanized Design: Adjustable and Detachable Hood and Adjustable cuff to prevent the wind and water,for a comfortable fit. 3 in 1 Detachable Design provide more convenience, you can separate the coat and inner as needed, or wear it together. It is suitable for different season and help you adapt to different climates\",\n        \"category\": \"women's clothing\",\n        \"image\": \"https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_t.png\",\n        \"rating\": {\n            \"rate\": 2.6,\n            \"count\": 235\n        }\n    },\n    {\n        \"id\": 16,\n        \"title\": \"Lock and Love Women's Removable Hooded Faux Leather Moto Biker Jacket\",\n        \"price\": 29.95,\n        \"description\": \"100% POLYURETHANE(shell) 100% POLYESTER(lining) 75% POLYESTER 25% COTTON (SWEATER), Faux leather material for style and comfort / 2 pockets of front, 2-For-One Hooded denim style faux leather jacket, Button detail on waist / Detail stitching at sides, HAND WASH ONLY / DO NOT BLEACH / LINE DRY / DO NOT IRON\",\n        \"category\": \"women's clothing\",\n        \"image\": \"https://fakestoreapi.com/img/81XH0e8fefL._AC_UY879_t.png\",\n        \"rating\": {\n            \"rate\": 2.9,\n            \"count\": 340\n        }\n    },\n    {\n        \"id\": 17,\n        \"title\": \"Rain Jacket Women Windbreaker Striped Climbing Raincoats\",\n        \"price\": 39.99,\n        \"description\": \"Lightweight perfet for trip or casual wear---Long sleeve with hooded, adjustable drawstring waist design. Button and zipper front closure raincoat, fully stripes Lined and The Raincoat has 2 side pockets are a good size to hold all kinds of things, it covers the hips, and the hood is generous but doesn't overdo it.Attached Cotton Lined Hood with Adjustable Drawstrings give it a real styled look.\",\n        \"category\": \"women's clothing\",\n        \"image\": \"https://fakestoreapi.com/img/71HblAHs5xL._AC_UY879_-2t.png\",\n        \"rating\": {\n            \"rate\": 3.8,\n            \"count\": 679\n        }\n    },\n    {\n        \"id\": 18,\n        \"title\": \"MBJ Women's Solid Short Sleeve Boat Neck V \",\n        \"price\": 9.85,\n        \"description\": \"95% RAYON 5% SPANDEX, Made in USA or Imported, Do Not Bleach, Lightweight fabric with great stretch for comfort, Ribbed on sleeves and neckline / Double stitching on bottom hem\",\n        \"category\": \"women's clothing\",\n        \"image\": \"https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_t.png\",\n        \"rating\": {\n            \"rate\": 4.7,\n            \"count\": 130\n        }\n    },\n    {\n        \"id\": 19,\n        \"title\": \"Opna Women's Short Sleeve Moisture\",\n        \"price\": 7.95,\n        \"description\": \"100% Polyester, Machine wash, 100% cationic polyester interlock, Machine Wash & Pre Shrunk for a Great Fit, Lightweight, roomy and highly breathable with moisture wicking fabric which helps to keep moisture away, Soft Lightweight Fabric with comfortable V-neck collar and a slimmer fit, delivers a sleek, more feminine silhouette and Added Comfort\",\n        \"category\": \"women's clothing\",\n        \"image\": \"https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_t.png\",\n        \"rating\": {\n            \"rate\": 4.5,\n            \"count\": 146\n        }\n    },\n    {\n        \"id\": 20,\n        \"title\": \"DANVOUY Womens T Shirt Casual Cotton Short\",\n        \"price\": 12.99,\n        \"description\": \"95%Cotton,5%Spandex, Features: Casual, Short Sleeve, Letter Print,V-Neck,Fashion Tees, The fabric is soft and has some stretch., Occasion: Casual/Office/Beach/School/Home/Street. Season: Spring,Summer,Autumn,Winter.\",\n        \"category\": \"women's clothing\",\n        \"image\": \"https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_t.png\",\n        \"rating\": {\n            \"rate\": 3.6,\n            \"count\": 145\n        }\n    }\n]"
 						}
 					]
@@ -115,7 +124,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 07 Dec 2025 16:14:56 GMT"
+									"value": "Sun, 07 Dec 2025 23:01:19 GMT"
 								},
 								{
 									"key": "Keep-Alive",
@@ -206,7 +215,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 07 Dec 2025 16:15:07 GMT"
+									"value": "Sun, 07 Dec 2025 23:01:34 GMT"
 								},
 								{
 									"key": "Keep-Alive",
@@ -294,7 +303,7 @@
 							},
 							"status": "OK",
 							"code": 200,
-							"_postman_previewlanguage": "",
+							"_postman_previewlanguage": null,
 							"header": [
 								{
 									"key": "Content-Type",
@@ -319,746 +328,6 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"id\": 10,\n    \"title\": \"SanDisk SSD PLUS 1TB Internal SSD - SATA III 6 Gb/s\",\n    \"price\": 109,\n    \"description\": \"Easy upgrade for faster boot up, shutdown, application load and response (As compared to 5400 RPM SATA 2.5” hard drive; Based on published specifications and internal benchmarking tests using PCMark vantage scores) Boosts burst write performance, making it ideal for typical PC workloads The perfect balance of performance and reliability Read/write speeds of up to 535MB/s/450MB/s (Based on internal testing; Performance may vary depending upon drive capacity, host device, OS and application.)\",\n    \"category\": \"electronics\",\n    \"image\": \"https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_t.png\",\n    \"rating\": {\n        \"rate\": 2.9,\n        \"count\": 470\n    }\n}"
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "orders",
-			"item": [
-				{
-					"name": "createOrder",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzY1MTI0Mzc0LCJleHAiOjE3NjUxMjQ2NzR9.py-41w-soyCE4AFbA7khTMx0eT7uL49lR1v0JnkWlJU",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"id\": 10,\n    \"clientId\": 1,\n    \"orderDetails\": [\n        {\n            \"productId\": 3,\n            \"quantity\": 666\n        }\n    ]\n}\n",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{ORDERS_API_URL}}/create",
-							"host": [
-								"{{ORDERS_API_URL}}"
-							],
-							"path": [
-								"create"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "createOrder",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Authorization",
-										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzY1MTI0Mzc0LCJleHAiOjE3NjUxMjQ2NzR9.py-41w-soyCE4AFbA7khTMx0eT7uL49lR1v0JnkWlJU",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"id\": 10,\n    \"clientId\": 1,\n    \"orderDetails\": [\n        {\n            \"productId\": 3,\n            \"quantity\": 666\n        }\n    ]\n}\n",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{ORDERS_API_URL}}/create",
-									"host": [
-										"{{ORDERS_API_URL}}"
-									],
-									"path": [
-										"create"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Date",
-									"value": "Sun, 07 Dec 2025 16:19:59 GMT"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=60"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"client\": {\n        \"clientId\": 1,\n        \"fullName\": \"Jose Bautista\"\n    },\n    \"date\": \"2025-12-07T16:19:59.209Z\",\n    \"id\": 10,\n    \"orderDetails\": [\n        {\n            \"productId\": 3,\n            \"quantity\": 666,\n            \"unitPrice\": 55.99\n        }\n    ],\n    \"orderStatusDescription\": \"PENDING\"\n}"
-						}
-					]
-				},
-				{
-					"name": "createOrder0",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzY1MTI0Mzc0LCJleHAiOjE3NjUxMjQ2NzR9.py-41w-soyCE4AFbA7khTMx0eT7uL49lR1v0JnkWlJU",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"id\": 13,\n    \"clientId\": 1,\n    \"orderDetails\": [\n        {\n            \"productId\": 1,\n            \"quantity\": 4\n        },\n        {\n            \"productId\": 15,\n            \"quantity\": 10\n        },\n        {\n            \"productId\": 4,\n            \"quantity\": 12\n        },\n        {\n            \"productId\": 15,\n            \"quantity\": 16\n        }\n    ]\n}\n",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{ORDERS_API_URL}}/create",
-							"host": [
-								"{{ORDERS_API_URL}}"
-							],
-							"path": [
-								"create"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "createOrder0",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Authorization",
-										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzY1MTI0Mzc0LCJleHAiOjE3NjUxMjQ2NzR9.py-41w-soyCE4AFbA7khTMx0eT7uL49lR1v0JnkWlJU",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"id\": 13,\n    \"clientId\": 1,\n    \"orderDetails\": [\n        {\n            \"productId\": 1,\n            \"quantity\": 4\n        },\n        {\n            \"productId\": 15,\n            \"quantity\": 10\n        },\n        {\n            \"productId\": 4,\n            \"quantity\": 12\n        },\n        {\n            \"productId\": 15,\n            \"quantity\": 16\n        }\n    ]\n}\n",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{ORDERS_API_URL}}/create",
-									"host": [
-										"{{ORDERS_API_URL}}"
-									],
-									"path": [
-										"create"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Date",
-									"value": "Sun, 07 Dec 2025 16:20:15 GMT"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=60"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"client\": {\n        \"clientId\": 1,\n        \"fullName\": \"Jose Bautista\"\n    },\n    \"date\": \"2025-12-07T16:20:14.846Z\",\n    \"id\": 13,\n    \"orderDetails\": [\n        {\n            \"productId\": 1,\n            \"quantity\": 4,\n            \"unitPrice\": 109.95\n        },\n        {\n            \"productId\": 15,\n            \"quantity\": 10,\n            \"unitPrice\": 56.99\n        },\n        {\n            \"productId\": 4,\n            \"quantity\": 12,\n            \"unitPrice\": 15.99\n        },\n        {\n            \"productId\": 15,\n            \"quantity\": 16,\n            \"unitPrice\": 56.99\n        }\n    ],\n    \"orderStatusDescription\": \"PENDING\"\n}"
-						}
-					]
-				},
-				{
-					"name": "getAllOrders",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NjUxMjQ0MzIsImV4cCI6MTc2NTEyNDczMn0.uBIN5Q1k15BjthV8jkZQV3GyZShbPZK-pR1JnVrvi1w",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"id\": 1,\n    \"clientId\": 1,\n    \"orderDetails\": [\n        {\n            \"productId\": 1,\n            \"quantity\": 4\n        }\n    ]\n}\n"
-						},
-						"url": {
-							"raw": "{{ORDERS_API_URL}}/all",
-							"host": [
-								"{{ORDERS_API_URL}}"
-							],
-							"path": [
-								"all"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "getAllOrders",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Authorization",
-										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NjUxMjQ0MzIsImV4cCI6MTc2NTEyNDczMn0.uBIN5Q1k15BjthV8jkZQV3GyZShbPZK-pR1JnVrvi1w",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"id\": 1,\n    \"clientId\": 1,\n    \"orderDetails\": [\n        {\n            \"productId\": 1,\n            \"quantity\": 4\n        }\n    ]\n}\n"
-								},
-								"url": {
-									"raw": "{{ORDERS_API_URL}}/all",
-									"host": [
-										"{{ORDERS_API_URL}}"
-									],
-									"path": [
-										"all"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Date",
-									"value": "Sun, 07 Dec 2025 16:20:41 GMT"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=60"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "[\n    {\n        \"client\": {\n            \"clientId\": 1,\n            \"fullName\": \"Jose Bautista\"\n        },\n        \"date\": \"2025-12-07T16:06:02.943Z\",\n        \"id\": 2,\n        \"orderDetails\": [\n            {\n                \"productId\": 3,\n                \"quantity\": 666,\n                \"unitPrice\": 55.99\n            }\n        ],\n        \"orderStatusDescription\": \"PENDING\"\n    },\n    {\n        \"client\": {\n            \"clientId\": 1,\n            \"fullName\": \"Jose Bautista\"\n        },\n        \"date\": \"2025-12-07T16:06:20.471Z\",\n        \"id\": 3,\n        \"orderDetails\": [\n            {\n                \"productId\": 1,\n                \"quantity\": 4,\n                \"unitPrice\": 109.95\n            },\n            {\n                \"productId\": 15,\n                \"quantity\": 10,\n                \"unitPrice\": 56.99\n            },\n            {\n                \"productId\": 4,\n                \"quantity\": 12,\n                \"unitPrice\": 15.99\n            },\n            {\n                \"productId\": 15,\n                \"quantity\": 16,\n                \"unitPrice\": 56.99\n            }\n        ],\n        \"orderStatusDescription\": \"CONFIRMED\"\n    },\n    {\n        \"client\": {\n            \"clientId\": 1,\n            \"fullName\": \"Jose Bautista\"\n        },\n        \"date\": \"2025-12-07T16:19:59.209Z\",\n        \"id\": 10,\n        \"orderDetails\": [\n            {\n                \"productId\": 3,\n                \"quantity\": 666,\n                \"unitPrice\": 55.99\n            }\n        ],\n        \"orderStatusDescription\": \"PENDING\"\n    },\n    {\n        \"client\": {\n            \"clientId\": 1,\n            \"fullName\": \"Jose Bautista\"\n        },\n        \"date\": \"2025-12-07T16:20:14.846Z\",\n        \"id\": 13,\n        \"orderDetails\": [\n            {\n                \"productId\": 1,\n                \"quantity\": 4,\n                \"unitPrice\": 109.95\n            },\n            {\n                \"productId\": 15,\n                \"quantity\": 10,\n                \"unitPrice\": 56.99\n            },\n            {\n                \"productId\": 4,\n                \"quantity\": 12,\n                \"unitPrice\": 15.99\n            },\n            {\n                \"productId\": 15,\n                \"quantity\": 16,\n                \"unitPrice\": 56.99\n            }\n        ],\n        \"orderStatusDescription\": \"PENDING\"\n    }\n]"
-						}
-					]
-				},
-				{
-					"name": "getOrderById",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzY1MTI0NDY3LCJleHAiOjE3NjUxMjQ3Njd9.pBjhC0BfqfCLmjuJkoeWPSWUEMI_9tg7CLJ5pg1Fs4Q",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"id\": 1,\n    \"clientId\": 1,\n    \"orderDetails\": [\n        {\n            \"productId\": 1,\n            \"quantity\": 4\n        }\n    ]\n}\n"
-						},
-						"url": {
-							"raw": "{{ORDERS_API_URL}}/10",
-							"host": [
-								"{{ORDERS_API_URL}}"
-							],
-							"path": [
-								"10"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "getOrderById",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Authorization",
-										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzY1MTI0NDY3LCJleHAiOjE3NjUxMjQ3Njd9.pBjhC0BfqfCLmjuJkoeWPSWUEMI_9tg7CLJ5pg1Fs4Q",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"id\": 1,\n    \"clientId\": 1,\n    \"orderDetails\": [\n        {\n            \"productId\": 1,\n            \"quantity\": 4\n        }\n    ]\n}\n"
-								},
-								"url": {
-									"raw": "{{ORDERS_API_URL}}/10",
-									"host": [
-										"{{ORDERS_API_URL}}"
-									],
-									"path": [
-										"10"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Date",
-									"value": "Sun, 07 Dec 2025 16:21:17 GMT"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=60"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"client\": {\n        \"clientId\": 1,\n        \"fullName\": \"Jose Bautista\"\n    },\n    \"date\": \"2025-12-07T16:19:59.209Z\",\n    \"id\": 10,\n    \"orderDetails\": [\n        {\n            \"productId\": 3,\n            \"quantity\": 666,\n            \"unitPrice\": 55.99\n        }\n    ],\n    \"orderStatusDescription\": \"PENDING\"\n}"
-						}
-					]
-				},
-				{
-					"name": "getOrderByIdSummary",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzY1MTI0NDY3LCJleHAiOjE3NjUxMjQ3Njd9.pBjhC0BfqfCLmjuJkoeWPSWUEMI_9tg7CLJ5pg1Fs4Q",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{ORDERS_API_URL}}/3/summary",
-							"host": [
-								"{{ORDERS_API_URL}}"
-							],
-							"path": [
-								"3",
-								"summary"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "getOrderByIdSummary",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzY1MTI0NDY3LCJleHAiOjE3NjUxMjQ3Njd9.pBjhC0BfqfCLmjuJkoeWPSWUEMI_9tg7CLJ5pg1Fs4Q",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "{{ORDERS_API_URL}}/3/summary",
-									"host": [
-										"{{ORDERS_API_URL}}"
-									],
-									"path": [
-										"3",
-										"summary"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Date",
-									"value": "Sun, 07 Dec 2025 16:21:29 GMT"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=60"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"clientId\": 1,\n    \"orderDetails\": [\n        {\n            \"productId\": 1,\n            \"quantity\": 4,\n            \"unitPrice\": 109.95\n        },\n        {\n            \"productId\": 15,\n            \"quantity\": 10,\n            \"unitPrice\": 56.99\n        },\n        {\n            \"productId\": 4,\n            \"quantity\": 12,\n            \"unitPrice\": 15.99\n        },\n        {\n            \"productId\": 15,\n            \"quantity\": 16,\n            \"unitPrice\": 56.99\n        }\n    ],\n    \"orderId\": 3,\n    \"status\": \"CONFIRMED\"\n}"
-						}
-					]
-				},
-				{
-					"name": "confirmOrder",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzY1MTI0NDY3LCJleHAiOjE3NjUxMjQ3Njd9.pBjhC0BfqfCLmjuJkoeWPSWUEMI_9tg7CLJ5pg1Fs4Q",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"orderId\": 3\n}"
-						},
-						"url": {
-							"raw": "{{ORDERS_API_URL}}/confirm",
-							"host": [
-								"{{ORDERS_API_URL}}"
-							],
-							"path": [
-								"confirm"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "confirmOrder",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Authorization",
-										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzY1MTI0NDY3LCJleHAiOjE3NjUxMjQ3Njd9.pBjhC0BfqfCLmjuJkoeWPSWUEMI_9tg7CLJ5pg1Fs4Q",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"orderId\": 3\n}"
-								},
-								"url": {
-									"raw": "{{ORDERS_API_URL}}/confirm",
-									"host": [
-										"{{ORDERS_API_URL}}"
-									],
-									"path": [
-										"confirm"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Date",
-									"value": "Sun, 07 Dec 2025 16:21:44 GMT"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=60"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"client\": {\n        \"clientId\": 1,\n        \"fullName\": \"Jose Bautista\"\n    },\n    \"date\": \"2025-12-07T16:06:20.471Z\",\n    \"id\": 3,\n    \"orderDetails\": [\n        {\n            \"productId\": 1,\n            \"quantity\": 4,\n            \"unitPrice\": 109.95\n        },\n        {\n            \"productId\": 15,\n            \"quantity\": 10,\n            \"unitPrice\": 56.99\n        },\n        {\n            \"productId\": 4,\n            \"quantity\": 12,\n            \"unitPrice\": 15.99\n        },\n        {\n            \"productId\": 15,\n            \"quantity\": 16,\n            \"unitPrice\": 56.99\n        }\n    ],\n    \"orderStatusDescription\": \"CONFIRMED\"\n}"
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "payments",
-			"item": [
-				{
-					"name": "createPayment",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzY1MTI0NDY3LCJleHAiOjE3NjUxMjQ3Njd9.pBjhC0BfqfCLmjuJkoeWPSWUEMI_9tg7CLJ5pg1Fs4Q",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"paymentId\": 54,\n    \"orderId\": 13,\n    \"paymentMethodDescription\": \"CARD\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{PAYMENTS_API_URL}}/create",
-							"host": [
-								"{{PAYMENTS_API_URL}}"
-							],
-							"path": [
-								"create"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "createPayment",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Authorization",
-										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzY1MTI0NDY3LCJleHAiOjE3NjUxMjQ3Njd9.pBjhC0BfqfCLmjuJkoeWPSWUEMI_9tg7CLJ5pg1Fs4Q",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"paymentId\": 54,\n    \"orderId\": 13,\n    \"paymentMethodDescription\": \"CARD\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{PAYMENTS_API_URL}}/create",
-									"host": [
-										"{{PAYMENTS_API_URL}}"
-									],
-									"path": [
-										"create"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Date",
-									"value": "Sun, 07 Dec 2025 16:22:21 GMT"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=60"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"clientId\": 1,\n    \"date\": \"2025-12-07T16:22:21.646Z\",\n    \"id\": 54,\n    \"orderDetails\": [\n        {\n            \"productId\": 1,\n            \"quantity\": 4,\n            \"unitPrice\": 109.95\n        },\n        {\n            \"productId\": 15,\n            \"quantity\": 10,\n            \"unitPrice\": 56.99\n        },\n        {\n            \"productId\": 4,\n            \"quantity\": 12,\n            \"unitPrice\": 15.99\n        },\n        {\n            \"productId\": 15,\n            \"quantity\": 16,\n            \"unitPrice\": 56.99\n        }\n    ],\n    \"orderId\": 13,\n    \"paymentMethodDescription\": \"CARD\",\n    \"paymentStatusDescription\": \"PAID\",\n    \"subtotal\": 2113.42,\n    \"tax\": 317.013,\n    \"total\": 2430.433\n}"
-						}
-					]
-				},
-				{
-					"name": "getAllPayments",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NjUxMjQ0MzIsImV4cCI6MTc2NTEyNDczMn0.uBIN5Q1k15BjthV8jkZQV3GyZShbPZK-pR1JnVrvi1w",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{PAYMENTS_API_URL}}/all",
-							"host": [
-								"{{PAYMENTS_API_URL}}"
-							],
-							"path": [
-								"all"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "getAllPayments",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NjUxMjQ0MzIsImV4cCI6MTc2NTEyNDczMn0.uBIN5Q1k15BjthV8jkZQV3GyZShbPZK-pR1JnVrvi1w",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "{{PAYMENTS_API_URL}}/all",
-									"host": [
-										"{{PAYMENTS_API_URL}}"
-									],
-									"path": [
-										"all"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Date",
-									"value": "Sun, 07 Dec 2025 16:22:44 GMT"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=60"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "[\n    {\n        \"clientId\": 1,\n        \"date\": \"2025-12-07T16:08:54.451Z\",\n        \"id\": 3,\n        \"orderDetails\": [\n            {\n                \"productId\": 3,\n                \"quantity\": 666,\n                \"unitPrice\": 55.99\n            }\n        ],\n        \"orderId\": 2,\n        \"paymentMethodDescription\": \"CASH\",\n        \"paymentStatusDescription\": \"PENDING\",\n        \"subtotal\": 37289.340000000004,\n        \"tax\": 5593.401000000001,\n        \"total\": 42882.741\n    },\n    {\n        \"clientId\": 1,\n        \"date\": \"2025-12-07T16:22:21.646Z\",\n        \"id\": 54,\n        \"orderDetails\": [\n            {\n                \"productId\": 1,\n                \"quantity\": 4,\n                \"unitPrice\": 109.95\n            },\n            {\n                \"productId\": 15,\n                \"quantity\": 10,\n                \"unitPrice\": 56.99\n            },\n            {\n                \"productId\": 4,\n                \"quantity\": 12,\n                \"unitPrice\": 15.99\n            },\n            {\n                \"productId\": 15,\n                \"quantity\": 16,\n                \"unitPrice\": 56.99\n            }\n        ],\n        \"orderId\": 13,\n        \"paymentMethodDescription\": \"CARD\",\n        \"paymentStatusDescription\": \"PAID\",\n        \"subtotal\": 2113.42,\n        \"tax\": 317.013,\n        \"total\": 2430.433\n    }\n]"
 						}
 					]
 				}
@@ -1119,18 +388,21 @@
 									}
 								},
 								"url": {
-									"raw": "{{SECURITY_API_URL}}/auth",
+									"raw": "localhost:8083/api/security/auth",
 									"host": [
-										"{{SECURITY_API_URL}}"
+										"localhost"
 									],
+									"port": "8083",
 									"path": [
+										"api",
+										"security",
 										"auth"
 									]
 								}
 							},
 							"status": "OK",
 							"code": 200,
-							"_postman_previewlanguage": "",
+							"_postman_previewlanguage": null,
 							"header": [
 								{
 									"key": "X-Content-Type-Options",
@@ -1234,18 +506,21 @@
 									}
 								},
 								"url": {
-									"raw": "{{SECURITY_API_URL}}/auth",
+									"raw": "localhost:8083/api/security/auth",
 									"host": [
-										"{{SECURITY_API_URL}}"
+										"localhost"
 									],
+									"port": "8083",
 									"path": [
+										"api",
+										"security",
 										"auth"
 									]
 								}
 							},
 							"status": "OK",
 							"code": 200,
-							"_postman_previewlanguage": "",
+							"_postman_previewlanguage": null,
 							"header": [
 								{
 									"key": "X-Content-Type-Options",
@@ -1319,18 +594,21 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{SECURITY_API_URL}}/health",
+									"raw": "localhost:8083/api/security/health",
 									"host": [
-										"{{SECURITY_API_URL}}"
+										"localhost"
 									],
+									"port": "8083",
 									"path": [
+										"api",
+										"security",
 										"health"
 									]
 								}
 							},
 							"status": "OK",
 							"code": 200,
-							"_postman_previewlanguage": "",
+							"_postman_previewlanguage": null,
 							"header": [
 								{
 									"key": "X-Content-Type-Options",
@@ -1383,7 +661,7 @@
 					]
 				},
 				{
-					"name": "validateToken",
+					"name": "validateAuth",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1414,7 +692,7 @@
 					},
 					"response": [
 						{
-							"name": "validateToken",
+							"name": "validateAuth",
 							"originalRequest": {
 								"method": "POST",
 								"header": [
@@ -1481,7 +759,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Sun, 07 Dec 2025 16:19:06 GMT"
+									"value": "Sun, 07 Dec 2025 23:03:44 GMT"
 								},
 								{
 									"key": "Keep-Alive",
@@ -1494,6 +772,1046 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"valid\": false\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "orders",
+			"item": [
+				{
+					"name": "createOrder",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzY1MTUwMjMyLCJleHAiOjE3NjUxNTA1MzJ9.hvgOJkjCjYRuAYSUaCfgg9G_IhL8PPfME108BRBdKLk",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 5,\n    \"clientId\": 1,\n    \"orderDetails\": [\n        {\n            \"productId\": 10,\n            \"quantity\": 2\n        }\n    ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ORDERS_API_URL}}/create",
+							"host": [
+								"{{ORDERS_API_URL}}"
+							],
+							"path": [
+								"create"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "createOrder",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzY1MTQ4NjA3LCJleHAiOjE3NjUxNDg5MDd9.DdAn_t-erI1B4V6MbpncSGlR6WvVTfIUO9w2swfdHBw",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": 2,\n    \"clientId\": 1,\n    \"orderDetails\": [\n        {\n            \"productId\": 1,\n            \"quantity\": 6\n        }\n    ]\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{ORDERS_API_URL}}/create",
+									"host": [
+										"{{ORDERS_API_URL}}"
+									],
+									"path": [
+										"create"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 07 Dec 2025 23:06:26 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"client\": {\n        \"clientId\": 1,\n        \"fullName\": \"Jose Bautista\"\n    },\n    \"date\": \"2025-12-07T23:06:26.651Z\",\n    \"id\": 2,\n    \"orderDetails\": [\n        {\n            \"productId\": 1,\n            \"quantity\": 6,\n            \"unitPrice\": 109.95\n        }\n    ],\n    \"orderStatusDescription\": \"PENDING\"\n}"
+						}
+					]
+				},
+				{
+					"name": "createOrder0",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzY1MTQ5NDEwLCJleHAiOjE3NjUxNDk3MTB9.vAS18UHJ6f1JIznIXvK-H3IU1a_Yh1YU4chOG_Uu-28",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 20,\n    \"clientId\": 1,\n    \"orderDetails\": [\n        {\n            \"productId\": 1,\n            \"quantity\": 4\n        },\n        {\n            \"productId\": 15,\n            \"quantity\": 10\n        },\n        {\n            \"productId\": 4,\n            \"quantity\": 12\n        },\n        {\n            \"productId\": 15,\n            \"quantity\": 16\n        }\n    ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ORDERS_API_URL}}/create",
+							"host": [
+								"{{ORDERS_API_URL}}"
+							],
+							"path": [
+								"create"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "createOrder0",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzY1MTI0Mzc0LCJleHAiOjE3NjUxMjQ2NzR9.py-41w-soyCE4AFbA7khTMx0eT7uL49lR1v0JnkWlJU",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": 13,\n    \"clientId\": 1,\n    \"orderDetails\": [\n        {\n            \"productId\": 1,\n            \"quantity\": 4\n        },\n        {\n            \"productId\": 15,\n            \"quantity\": 10\n        },\n        {\n            \"productId\": 4,\n            \"quantity\": 12\n        },\n        {\n            \"productId\": 15,\n            \"quantity\": 16\n        }\n    ]\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{ORDERS_API_URL}}/create",
+									"host": [
+										"{{ORDERS_API_URL}}"
+									],
+									"path": [
+										"create"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 07 Dec 2025 16:20:15 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"client\": {\n        \"clientId\": 1,\n        \"fullName\": \"Jose Bautista\"\n    },\n    \"date\": \"2025-12-07T16:20:14.846Z\",\n    \"id\": 13,\n    \"orderDetails\": [\n        {\n            \"productId\": 1,\n            \"quantity\": 4,\n            \"unitPrice\": 109.95\n        },\n        {\n            \"productId\": 15,\n            \"quantity\": 10,\n            \"unitPrice\": 56.99\n        },\n        {\n            \"productId\": 4,\n            \"quantity\": 12,\n            \"unitPrice\": 15.99\n        },\n        {\n            \"productId\": 15,\n            \"quantity\": 16,\n            \"unitPrice\": 56.99\n        }\n    ],\n    \"orderStatusDescription\": \"PENDING\"\n}"
+						}
+					]
+				},
+				{
+					"name": "getAllOrders",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NjUxNTAwNDIsImV4cCI6MTc2NTE1MDM0Mn0.-0AqA8GmkHcLKFSCCnFFl_dJZRwy2O5-_vAvcDm7G2g",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"clientId\": 1,\n    \"orderDetails\": [\n        {\n            \"productId\": 1,\n            \"quantity\": 4\n        }\n    ]\n}\n"
+						},
+						"url": {
+							"raw": "{{ORDERS_API_URL}}/all",
+							"host": [
+								"{{ORDERS_API_URL}}"
+							],
+							"path": [
+								"all"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "getAllOrders",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NjUxMjQ0MzIsImV4cCI6MTc2NTEyNDczMn0.uBIN5Q1k15BjthV8jkZQV3GyZShbPZK-pR1JnVrvi1w",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": 1,\n    \"clientId\": 1,\n    \"orderDetails\": [\n        {\n            \"productId\": 1,\n            \"quantity\": 4\n        }\n    ]\n}\n"
+								},
+								"url": {
+									"raw": "{{ORDERS_API_URL}}/all",
+									"host": [
+										"{{ORDERS_API_URL}}"
+									],
+									"path": [
+										"all"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 07 Dec 2025 16:20:41 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"client\": {\n            \"clientId\": 1,\n            \"fullName\": \"Jose Bautista\"\n        },\n        \"date\": \"2025-12-07T16:06:02.943Z\",\n        \"id\": 2,\n        \"orderDetails\": [\n            {\n                \"productId\": 3,\n                \"quantity\": 666,\n                \"unitPrice\": 55.99\n            }\n        ],\n        \"orderStatusDescription\": \"PENDING\"\n    },\n    {\n        \"client\": {\n            \"clientId\": 1,\n            \"fullName\": \"Jose Bautista\"\n        },\n        \"date\": \"2025-12-07T16:06:20.471Z\",\n        \"id\": 3,\n        \"orderDetails\": [\n            {\n                \"productId\": 1,\n                \"quantity\": 4,\n                \"unitPrice\": 109.95\n            },\n            {\n                \"productId\": 15,\n                \"quantity\": 10,\n                \"unitPrice\": 56.99\n            },\n            {\n                \"productId\": 4,\n                \"quantity\": 12,\n                \"unitPrice\": 15.99\n            },\n            {\n                \"productId\": 15,\n                \"quantity\": 16,\n                \"unitPrice\": 56.99\n            }\n        ],\n        \"orderStatusDescription\": \"CONFIRMED\"\n    },\n    {\n        \"client\": {\n            \"clientId\": 1,\n            \"fullName\": \"Jose Bautista\"\n        },\n        \"date\": \"2025-12-07T16:19:59.209Z\",\n        \"id\": 10,\n        \"orderDetails\": [\n            {\n                \"productId\": 3,\n                \"quantity\": 666,\n                \"unitPrice\": 55.99\n            }\n        ],\n        \"orderStatusDescription\": \"PENDING\"\n    },\n    {\n        \"client\": {\n            \"clientId\": 1,\n            \"fullName\": \"Jose Bautista\"\n        },\n        \"date\": \"2025-12-07T16:20:14.846Z\",\n        \"id\": 13,\n        \"orderDetails\": [\n            {\n                \"productId\": 1,\n                \"quantity\": 4,\n                \"unitPrice\": 109.95\n            },\n            {\n                \"productId\": 15,\n                \"quantity\": 10,\n                \"unitPrice\": 56.99\n            },\n            {\n                \"productId\": 4,\n                \"quantity\": 12,\n                \"unitPrice\": 15.99\n            },\n            {\n                \"productId\": 15,\n                \"quantity\": 16,\n                \"unitPrice\": 56.99\n            }\n        ],\n        \"orderStatusDescription\": \"PENDING\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "getOrderById",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzY1MTI0NDY3LCJleHAiOjE3NjUxMjQ3Njd9.pBjhC0BfqfCLmjuJkoeWPSWUEMI_9tg7CLJ5pg1Fs4Q",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"clientId\": 1,\n    \"orderDetails\": [\n        {\n            \"productId\": 1,\n            \"quantity\": 4\n        }\n    ]\n}\n"
+						},
+						"url": {
+							"raw": "{{ORDERS_API_URL}}/10",
+							"host": [
+								"{{ORDERS_API_URL}}"
+							],
+							"path": [
+								"10"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "getOrderById",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzY1MTI0NDY3LCJleHAiOjE3NjUxMjQ3Njd9.pBjhC0BfqfCLmjuJkoeWPSWUEMI_9tg7CLJ5pg1Fs4Q",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": 1,\n    \"clientId\": 1,\n    \"orderDetails\": [\n        {\n            \"productId\": 1,\n            \"quantity\": 4\n        }\n    ]\n}\n"
+								},
+								"url": {
+									"raw": "{{ORDERS_API_URL}}/10",
+									"host": [
+										"{{ORDERS_API_URL}}"
+									],
+									"path": [
+										"10"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 07 Dec 2025 16:21:17 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"client\": {\n        \"clientId\": 1,\n        \"fullName\": \"Jose Bautista\"\n    },\n    \"date\": \"2025-12-07T16:19:59.209Z\",\n    \"id\": 10,\n    \"orderDetails\": [\n        {\n            \"productId\": 3,\n            \"quantity\": 666,\n            \"unitPrice\": 55.99\n        }\n    ],\n    \"orderStatusDescription\": \"PENDING\"\n}"
+						}
+					]
+				},
+				{
+					"name": "getOrderByIdSummary",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzY1MTI0NDY3LCJleHAiOjE3NjUxMjQ3Njd9.pBjhC0BfqfCLmjuJkoeWPSWUEMI_9tg7CLJ5pg1Fs4Q",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{ORDERS_API_URL}}/2/summary",
+							"host": [
+								"{{ORDERS_API_URL}}"
+							],
+							"path": [
+								"2",
+								"summary"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "getOrderByIdSummary",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzY1MTI0NDY3LCJleHAiOjE3NjUxMjQ3Njd9.pBjhC0BfqfCLmjuJkoeWPSWUEMI_9tg7CLJ5pg1Fs4Q",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{ORDERS_API_URL}}/2/summary",
+									"host": [
+										"{{ORDERS_API_URL}}"
+									],
+									"path": [
+										"2",
+										"summary"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 07 Dec 2025 23:08:02 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"clientId\": 1,\n    \"orderDetails\": [\n        {\n            \"productId\": 1,\n            \"quantity\": 6,\n            \"unitPrice\": 109.95\n        }\n    ],\n    \"orderId\": 2,\n    \"status\": \"PENDING\"\n}"
+						}
+					]
+				},
+				{
+					"name": "confirmOrder",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzY1MTQ5MTQzLCJleHAiOjE3NjUxNDk0NDN9.YQFHY5gzPv5pKxEb9NLoN53X0aPUFJVAiRNl75x1EmE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"orderId\": 2\n}"
+						},
+						"url": {
+							"raw": "{{ORDERS_API_URL}}/confirm",
+							"host": [
+								"{{ORDERS_API_URL}}"
+							],
+							"path": [
+								"confirm"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "confirmOrder",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NjUxNDg5MTgsImV4cCI6MTc2NTE0OTIxOH0.zHZhL9_yjqr6PHBHzAHsxsSfqLAD6YniofydHFRSORE",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"orderId\": 2\n}"
+								},
+								"url": {
+									"raw": "{{ORDERS_API_URL}}/confirm",
+									"host": [
+										"{{ORDERS_API_URL}}"
+									],
+									"path": [
+										"confirm"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 07 Dec 2025 23:13:05 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"client\": {\n        \"clientId\": 1,\n        \"fullName\": \"Jose Bautista\"\n    },\n    \"date\": \"2025-12-07T23:12:33.876Z\",\n    \"id\": 2,\n    \"orderDetails\": [\n        {\n            \"productId\": 1,\n            \"quantity\": 6,\n            \"unitPrice\": 109.95\n        }\n    ],\n    \"orderStatusDescription\": \"CONFIRMED\"\n}"
+						},
+						{
+							"name": "confirmOrderFail",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NjUxNDg5MTgsImV4cCI6MTc2NTE0OTIxOH0.zHZhL9_yjqr6PHBHzAHsxsSfqLAD6YniofydHFRSORE",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"orderId\": 2\n}"
+								},
+								"url": {
+									"raw": "{{ORDERS_API_URL}}/confirm",
+									"host": [
+										"{{ORDERS_API_URL}}"
+									],
+									"path": [
+										"confirm"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 07 Dec 2025 23:13:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"Order not in \\\"PENDING\\\" status.\",\n    \"ok\": false\n}"
+						}
+					]
+				},
+				{
+					"name": "cancelOrder",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NjUxNDkyNjQsImV4cCI6MTc2NTE0OTU2NH0.uUvJDs7DBCAnjDVuwpRgP8Bpwqci9TlbLM8zHk6Lg2I",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"orderId\": 13\n}"
+						},
+						"url": {
+							"raw": "{{ORDERS_API_URL}}/cancel",
+							"host": [
+								"{{ORDERS_API_URL}}"
+							],
+							"path": [
+								"cancel"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "cancelOrderFail",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NjUxNDkyNjQsImV4cCI6MTc2NTE0OTU2NH0.uUvJDs7DBCAnjDVuwpRgP8Bpwqci9TlbLM8zHk6Lg2I",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"orderId\": 2\n}"
+								},
+								"url": {
+									"raw": "{{ORDERS_API_URL}}/cancel",
+									"host": [
+										"{{ORDERS_API_URL}}"
+									],
+									"path": [
+										"cancel"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 07 Dec 2025 23:14:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"Order not in \\\"PENDING\\\" status.\",\n    \"ok\": false\n}"
+						},
+						{
+							"name": "cancelOrder",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NjUxNDkyNjQsImV4cCI6MTc2NTE0OTU2NH0.uUvJDs7DBCAnjDVuwpRgP8Bpwqci9TlbLM8zHk6Lg2I",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"orderId\": 13\n}"
+								},
+								"url": {
+									"raw": "{{ORDERS_API_URL}}/cancel",
+									"host": [
+										"{{ORDERS_API_URL}}"
+									],
+									"path": [
+										"cancel"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 07 Dec 2025 23:15:11 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"client\": {\n        \"clientId\": 1,\n        \"fullName\": \"Jose Bautista\"\n    },\n    \"date\": \"2025-12-07T23:12:49.768Z\",\n    \"id\": 13,\n    \"orderDetails\": [\n        {\n            \"productId\": 1,\n            \"quantity\": 4,\n            \"unitPrice\": 109.95\n        },\n        {\n            \"productId\": 15,\n            \"quantity\": 10,\n            \"unitPrice\": 56.99\n        },\n        {\n            \"productId\": 4,\n            \"quantity\": 12,\n            \"unitPrice\": 15.99\n        },\n        {\n            \"productId\": 15,\n            \"quantity\": 16,\n            \"unitPrice\": 56.99\n        }\n    ],\n    \"orderStatusDescription\": \"CANCELLED\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "payments",
+			"item": [
+				{
+					"name": "creditCardPayment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzY1MTUwMjgyLCJleHAiOjE3NjUxNTA1ODJ9.RbeQwfnE6A1LXpn0WglzTnOma0-kbfTsInXUehC3BLA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"paymentId\": 3,\n    \"orderId\": 40,\n    \"paymentMethodDescription\": \"CARD\",\n    \"cardNumber\": \"111222333\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{PAYMENTS_API_URL}}/create",
+							"host": [
+								"{{PAYMENTS_API_URL}}"
+							],
+							"path": [
+								"create"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "creditCardPayment",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzY1MTQ5NDEwLCJleHAiOjE3NjUxNDk3MTB9.vAS18UHJ6f1JIznIXvK-H3IU1a_Yh1YU4chOG_Uu-28",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"paymentId\": 3,\n    \"orderId\": 15,\n    \"paymentMethodDescription\": \"CARD\",\n    \"cardNumber\": \"111222333\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{PAYMENTS_API_URL}}/create",
+									"host": [
+										"{{PAYMENTS_API_URL}}"
+									],
+									"path": [
+										"create"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 07 Dec 2025 23:19:03 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"cardNumber\": \"111222333\",\n    \"clientId\": 1,\n    \"date\": \"2025-12-07T23:19:03.058Z\",\n    \"id\": 3,\n    \"orderId\": 15,\n    \"paymentStatus\": \"PAID\",\n    \"subtotal\": 659.7,\n    \"tax\": 98.955,\n    \"total\": 758.6550000000001\n}"
+						}
+					]
+				},
+				{
+					"name": "cashPayment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzY1MTUwMTA2LCJleHAiOjE3NjUxNTA0MDZ9.LWXAHfsoen3KTzTjVVjaqHqOjQ-m7wCKhJwtP4U-_bA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"paymentId\": 5,\n    \"orderId\": 5,\n    \"paymentMethodDescription\": \"CASH\",\n    \"cardNumber\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{PAYMENTS_API_URL}}/create",
+							"host": [
+								"{{PAYMENTS_API_URL}}"
+							],
+							"path": [
+								"create"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "cashPayment",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNzY1MTQ5NDEwLCJleHAiOjE3NjUxNDk3MTB9.vAS18UHJ6f1JIznIXvK-H3IU1a_Yh1YU4chOG_Uu-28",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"paymentId\": 2,\n    \"orderId\": 10,\n    \"paymentMethodDescription\": \"CASH\",\n    \"cardNumber\": \"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{PAYMENTS_API_URL}}/create",
+									"host": [
+										"{{PAYMENTS_API_URL}}"
+									],
+									"path": [
+										"create"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 07 Dec 2025 23:17:46 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"clientId\": 1,\n    \"date\": \"2025-12-07T23:17:46.957Z\",\n    \"id\": 2,\n    \"orderId\": 10,\n    \"paymentStatus\": \"PENDING\",\n    \"subtotal\": 659.7,\n    \"tax\": 98.955,\n    \"total\": 758.6550000000001\n}"
+						}
+					]
+				},
+				{
+					"name": "getAllPayments",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NjUxNTAxODMsImV4cCI6MTc2NTE1MDQ4M30.tOlUUT5CwYk09ulC_wGW1cwh3tMAdxoZXM86yliPBUM",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{PAYMENTS_API_URL}}/all",
+							"host": [
+								"{{PAYMENTS_API_URL}}"
+							],
+							"path": [
+								"all"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "getAllPayments",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NjUxNTAxODMsImV4cCI6MTc2NTE1MDQ4M30.tOlUUT5CwYk09ulC_wGW1cwh3tMAdxoZXM86yliPBUM",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{PAYMENTS_API_URL}}/all",
+									"host": [
+										"{{PAYMENTS_API_URL}}"
+									],
+									"path": [
+										"all"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 07 Dec 2025 23:32:17 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"clientId\": 1,\n        \"date\": \"2025-12-07T23:29:38.468Z\",\n        \"id\": 2,\n        \"orderId\": 20,\n        \"paymentStatus\": \"PENDING\",\n        \"subtotal\": 2113.42,\n        \"tax\": 317.013,\n        \"total\": 2430.433\n    },\n    {\n        \"cardNumber\": \"111222333\",\n        \"clientId\": 1,\n        \"date\": \"2025-12-07T23:31:42.637Z\",\n        \"id\": 3,\n        \"orderId\": 40,\n        \"paymentStatus\": \"PAID\",\n        \"subtotal\": 659.7,\n        \"tax\": 98.955,\n        \"total\": 758.6550000000001\n    },\n    {\n        \"clientId\": 1,\n        \"date\": \"2025-12-07T23:31:56.700Z\",\n        \"id\": 5,\n        \"orderId\": 5,\n        \"paymentStatus\": \"PENDING\",\n        \"subtotal\": 218,\n        \"tax\": 32.699999999999996,\n        \"total\": 250.7\n    }\n]"
 						}
 					]
 				}

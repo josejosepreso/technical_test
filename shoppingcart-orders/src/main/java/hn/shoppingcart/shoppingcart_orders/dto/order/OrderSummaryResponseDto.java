@@ -16,6 +16,6 @@ public final class OrderSummaryResponseDto {
 		this.orderId = order.getId();
 		this.clientId = order.getClient().getId();
 		this.orderDetails = order.getOrderDetails().stream().map(OrderDetailResponseDto::new).toList();
-		this.status = order.getStatus().getDescription();
+		this.status = order.getStatus();
 	}
 }

@@ -10,4 +10,6 @@ public final class PaymentRequestDto {
 	private final int orderId;
 
 	private final String paymentMethodDescription;
+
+	private final String cardNumber;
 }
