@@ -1,7 +1,6 @@
 package hn.shoppingcart.shoppingcart_payments.util;
 
 import java.io.IOException;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
