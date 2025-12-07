@@ -1,43 +1,29 @@
 package hn.shoppingcart.shoppingcart_security.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import hn.shoppingcart.shoppingcart_security.Configuration;
+import hn.shoppingcart.shoppingcart_security.UserRole;
 import hn.shoppingcart.shoppingcart_security.dto.AuthRequestDto;
 import hn.shoppingcart.shoppingcart_security.dto.ValidateJwtRequestDto;
 
 import java.time.Instant;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 
-final class UserRole {
-	public static final String CLIENT_ROLE_DESCRIPTION = "CLIENT";
-	public static final String ADMIN_ROLE_DESCRIPTION = "ADMIN";
-}
-
 @Service
 public class JwtService {
 
-	private Map<String, List<String>> authorizations;
-
-	public JwtService() {
-		this.authorizations = new HashMap<>();
-
-		this.authorizations.put(Configuration.ORDERS_SERVICE_BASE_URL + "/create", List.of(UserRole.CLIENT_ROLE_DESCRIPTION));
-		this.authorizations.put(Configuration.ORDERS_SERVICE_BASE_URL + "/confirm", List.of(UserRole.CLIENT_ROLE_DESCRIPTION));
-		this.authorizations.put(Configuration.ORDERS_SERVICE_BASE_URL + "/all", List.of(UserRole.ADMIN_ROLE_DESCRIPTION));
-
-		this.authorizations.put(Configuration.PAYMENTS_SERVICE_BASE_URL + "/create", List.of(UserRole.CLIENT_ROLE_DESCRIPTION));
-		this.authorizations.put(Configuration.PAYMENTS_SERVICE_BASE_URL + "/all", List.of(UserRole.ADMIN_ROLE_DESCRIPTION));
-	}
+	@Autowired
+	private Map<String, List<UserRole>> authorizations;
 
 	public String generateToken(AuthRequestDto authRequestDto) throws Exception {
-		final String role = this.validateCredentials(authRequestDto.getUsername(), authRequestDto.getPassword());
+		final UserRole role = this.validateCredentials(authRequestDto.getUsername(), authRequestDto.getPassword());
 
 		return Jwts.builder()
 			.claim("role", role)
@@ -47,13 +33,13 @@ public class JwtService {
 			.compact();
 	}
 
-	private String validateCredentials(String username, String password) throws Exception {
+	private UserRole validateCredentials(String username, String password) throws Exception {
 		if (username.equals("user") && password.equals("abc123")) {
-			return UserRole.CLIENT_ROLE_DESCRIPTION;
+			return UserRole.CLIENT;
 		}
 
 		if (username.equals("admin") && password.equals("def456")) {
-			return UserRole.ADMIN_ROLE_DESCRIPTION;
+			return UserRole.ADMIN;
 		}
 
 		throw new Exception("Invalid credentials.");
@@ -78,7 +64,7 @@ public class JwtService {
 	}
 
 	public boolean authorize(ValidateJwtRequestDto dto) {
-		final List<String> roles = this.authorizations.get(dto.getUrl());
+		final List<UserRole> roles = this.authorizations.get(dto.getUrl());
 
 		if (roles == null || roles.isEmpty()) {
 			return true;
@@ -86,6 +72,11 @@ public class JwtService {
 
 		final String role = this.extractUserRole(dto.getToken());
 
-		return this.isValid(dto.getToken()) && roles.contains(role);
+		final boolean authorized = roles.stream()
+			.map(userRole -> userRole.name())
+			.toList()
+			.contains(role);
+
+		return this.isValid(dto.getToken()) && authorized;
 	}
 }

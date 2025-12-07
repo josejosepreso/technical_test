@@ -95,7 +95,9 @@ public class OrderService {
 	public OrderResponseDto create(OrderRequestDto dto) throws Exception {
 		final int id = dto.getId();
 
-		if (this.getById(id).isPresent()) throw new Exception(String.format("Order width id %s already exists.", id));
+		if (this.getById(id).isPresent()) {
+			throw new Exception(String.format("Order width id %s already exists.", id));
+		}
 
 		// assuming clientId is unique
 		final Client client = this.clients.stream()
